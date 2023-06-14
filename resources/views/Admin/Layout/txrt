@@ -1,0 +1,17 @@
+@include('Admin.Common.TopBar')
+
+
+@include('Admin.Common.SideBar')
+
+
+
+<!--begin::Content wrapper-->
+@yield('content')
+<!--end::Content wrapper-->
+
+
+
+@include('Admin.Common.RightBar')
+
+
+@include('Admin.Common.Footer')

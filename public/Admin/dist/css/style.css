@@ -1,0 +1,17 @@
+.alert_success{
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+.error_success{
+    color: #155724;
+    background-color: #fff1f0;
+    border-color: #fff1f0;
+}
+.add_btn{
+    padding: 0 15px;
+}
+.add_btn i{
+    margin-left: 2px;
+    font-size: 12px;
+}
