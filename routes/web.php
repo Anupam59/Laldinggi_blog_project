@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SiteCommonController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\CustomAuthController;
@@ -47,5 +48,19 @@ Route::get('sub-category-create', [SubCategoryController::class, 'SubCategoryCre
 Route::post('sub-category-entry', [SubCategoryController::class, 'SubCategoryEntry']);
 Route::get('sub-category-edit/{id}', [SubCategoryController::class, 'SubCategoryEdit']);
 Route::post('sub-category-update/{id}', [SubCategoryController::class, 'SubCategoryUpdate']);
+
+
+
+Route::get('about-edit', [SiteCommonController::class, 'AboutEdit']);
+Route::post('about-update', [SiteCommonController::class, 'AboutUpdate']);
+
+Route::get('communication-edit', [SiteCommonController::class, 'CommunicationEdit']);
+Route::post('communication-update', [SiteCommonController::class, 'CommunicationUpdate']);
+
+Route::get('policy-edit', [SiteCommonController::class, 'PolicyEdit']);
+Route::post('policy-update', [SiteCommonController::class, 'PolicyUpdate']);
+
+Route::get('terms-edit', [SiteCommonController::class, 'TermsEdit']);
+Route::post('terms-update', [SiteCommonController::class, 'TermsUpdate']);
 
 

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('site_name',100)->nullable();
             $table->string('site_email',100)->nullable();
             $table->string('site_contact',100)->nullable();
+            $table->string('site_bn_contact',100)->nullable();
 
             $table->string('site_title',200)->nullable();
             $table->string('site_keyword',300)->nullable();
@@ -26,6 +27,7 @@ return new class extends Migration
 
             $table->string('site_link',200)->nullable();
             $table->string('site_address',200)->nullable();
+            $table->string('site_bn_address',200)->nullable();
 
             $table->string('site_fb_link',300)->nullable();
             $table->string('site_tw_link',300)->nullable();
@@ -37,14 +39,21 @@ return new class extends Migration
             $table->string('site_favicon',100)->nullable();
             $table->string('site_default_img',100)->nullable();
 
-           
+
             $table->string('site_adout_title',200)->nullable();
             $table->text('site_adout_description')->nullable();
+            $table->string('site_adout_bn_title',200)->nullable();
+            $table->text('site_adout_bn_description')->nullable();
             $table->string('site_adout_img',100)->nullable();
+
 
             $table->text('site_privacy_policy')->nullable();
             $table->text('site_terms')->nullable();
             $table->text('site_communication')->nullable();
+
+            $table->text('site_bn_privacy_policy')->nullable();
+            $table->text('site_bn_terms')->nullable();
+            $table->text('site_bn_communication')->nullable();
 
 
             $table->tinyInteger('status')->default(1);
