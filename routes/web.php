@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\SiteCommonController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\UserController;
@@ -53,15 +54,19 @@ Route::post('sub-category-update/{id}', [SubCategoryController::class, 'SubCateg
 
 Route::get('about-edit', [SiteCommonController::class, 'AboutEdit']);
 Route::post('about-update', [SiteCommonController::class, 'AboutUpdate']);
-
 Route::get('communication-edit', [SiteCommonController::class, 'CommunicationEdit']);
 Route::post('communication-update', [SiteCommonController::class, 'CommunicationUpdate']);
-
 Route::get('policy-edit', [SiteCommonController::class, 'PolicyEdit']);
 Route::post('policy-update', [SiteCommonController::class, 'PolicyUpdate']);
-
 Route::get('terms-edit', [SiteCommonController::class, 'TermsEdit']);
 Route::post('terms-update', [SiteCommonController::class, 'TermsUpdate']);
-
 Route::get('info-edit', [SiteCommonController::class, 'InfoEdit']);
 Route::post('info-update', [SiteCommonController::class, 'InfoUpdate']);
+
+
+
+Route::get('menu-list', [MenuController::class, 'MenuIndex']);
+Route::get('menu-create', [MenuController::class, 'MenuCreate']);
+Route::post('menu-entry', [MenuController::class, 'MenuEntry']);
+Route::get('menu-edit/{id}', [MenuController::class, 'MenuEdit']);
+Route::post('menu-update/{id}', [MenuController::class, 'MenuUpdate']);

@@ -14,17 +14,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('category', function (Blueprint $table) {
-            $table->increments('cat_id');
-            $table->string('cat_title',100)->unique();
-            $table->string('cat_slug',100);
-            $table->string('cat_en_name',100);
-            $table->string('cat_bn_name',100);
-            $table->string('cat_en_desc',300);
-            $table->string('cat_bn_desc',300);
-
-            $table->string('cat_en_key',300);
-            $table->string('cat_bn_key',300)->nullable();
+        Schema::create('menu', function (Blueprint $table) {
+            $table->increments('menu_id');
+            $table->string('menu_title',100)->unique();
 
             $table->tinyInteger('status')->default(1);
             $table->integer('creator');
@@ -41,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category');
+        Schema::dropIfExists('menu');
     }
 };
