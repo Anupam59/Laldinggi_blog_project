@@ -35,8 +35,8 @@ class SiteCommonController extends Controller
 
         $img =  $request->file('site_adout_img');
         if ($img){
-            $ImageName =time().'.'.$img->getClientOriginalExtension();
-            $Path = "Images/site-about/";
+            $ImageName ='adout_img.'.$img->getClientOriginalExtension();
+            $Path = "Images/site-info/";
             $ResizeImage = Image::make($img)->resize(490,380);
             $url = $Path.$ImageName;
             $url_database = "/".$Path.$ImageName;
@@ -167,5 +167,150 @@ class SiteCommonController extends Controller
         }
 
     }
+
+
+
+    public function InfoEdit(){
+        $id = 1;
+        $SiteCommon = SiteCommonModel::where('site_common_id',$id)
+            ->select(
+                'time_zone',
+                'site_name',
+                'site_email',
+                'site_contact',
+                'site_bn_contact',
+
+                'site_title',
+                'site_keyword',
+                'site_description',
+
+                'site_link',
+                'site_address',
+                'site_bn_address',
+
+                'site_logo',
+                'site_logo_big',
+                'site_favicon',
+                'site_default_img',
+            )->first();
+        return view('Admin/Pages/SiteCommon/Info',compact('SiteCommon'));
+    }
+
+
+
+    public function InfoUpdate(Request $request){
+        $id = 1;
+        $data =  array();
+        $data['time_zone'] = $request->time_zone;
+        $data['site_name'] = $request->site_name;
+        $data['site_email'] = $request->site_email;
+        $data['site_contact'] = $request->site_contact;
+        $data['site_bn_contact'] = $request->site_bn_contact;
+
+        $data['site_title'] = $request->site_title;
+        $data['site_keyword'] = $request->site_keyword;
+        $data['site_description'] = $request->site_description;
+
+        $data['site_link'] = $request->site_link;
+        $data['site_address'] = $request->site_address;
+        $data['site_bn_address'] = $request->site_bn_address;
+
+        $data['modifier'] = 1;
+        $data['modified_date'] = date("Y-m-d h:i:s");
+
+        $site_logo =  $request->file('site_logo');
+        if ($site_logo){
+            $ImageName = 'logo.'.$site_logo->getClientOriginalExtension();
+            $Path = "Images/site-info/";
+            $ResizeImage = Image::make($site_logo)->resize(490,380);
+            $url = $Path.$ImageName;
+            $url_database = "/".$Path.$ImageName;
+            $ResizeImage ->save($url);
+            $OldData = SiteCommonModel::where('site_common_id','=',$id)->select('site_logo')->first();
+            $OldImage = $OldData->site_logo;
+            $OldImageUrl = substr($OldImage, 1);
+            if ($OldImage){
+                unlink($OldImageUrl);
+                $data['site_logo'] = $url_database;
+            }else{
+                $data['site_logo'] = $url_database;
+            }
+        }
+
+
+
+        $site_logo_big =  $request->file('site_logo_big');
+        if ($site_logo_big){
+            $ImageName ='logo_big.'.$site_logo_big->getClientOriginalExtension();
+            $Path = "Images/site-info/";
+            $ResizeImage = Image::make($site_logo_big)->resize(490,380);
+            $url = $Path.$ImageName;
+            $url_database = "/".$Path.$ImageName;
+            $ResizeImage ->save($url);
+            $OldData = SiteCommonModel::where('site_common_id','=',$id)->select('site_logo_big')->first();
+            $OldImage = $OldData->site_logo_big;
+            $OldImageUrl = substr($OldImage, 1);
+            if ($OldImage){
+                unlink($OldImageUrl);
+                $data['site_logo_big'] = $url_database;
+            }else{
+                $data['site_logo_big'] = $url_database;
+            }
+        }
+
+
+
+        $site_favicon =  $request->file('site_favicon');
+        if ($site_favicon){
+            $ImageName ='favicon.'.$site_favicon->getClientOriginalExtension();
+            $Path = "Images/site-info/";
+            $ResizeImage = Image::make($site_favicon)->resize(490,380);
+            $url = $Path.$ImageName;
+            $url_database = "/".$Path.$ImageName;
+            $ResizeImage ->save($url);
+            $OldData = SiteCommonModel::where('site_common_id','=',$id)->select('site_favicon')->first();
+            $OldImage = $OldData->site_favicon;
+            $OldImageUrl = substr($OldImage, 1);
+            if ($OldImage){
+                unlink($OldImageUrl);
+                $data['site_favicon'] = $url_database;
+            }else{
+                $data['site_favicon'] = $url_database;
+            }
+        }
+
+
+
+        $site_default_img =  $request->file('site_default_img');
+        if ($site_default_img){
+            $ImageName ='default_img.'.$site_default_img->getClientOriginalExtension();
+            $Path = "Images/site-info/";
+            $ResizeImage = Image::make($site_default_img)->resize(490,380);
+            $url = $Path.$ImageName;
+            $url_database = "/".$Path.$ImageName;
+            $ResizeImage ->save($url);
+            $OldData = SiteCommonModel::where('site_common_id','=',$id)->select('site_default_img')->first();
+            $OldImage = $OldData->site_default_img;
+            $OldImageUrl = substr($OldImage, 1);
+            if ($OldImage){
+                unlink($OldImageUrl);
+                $data['site_default_img'] = $url_database;
+            }else{
+                $data['site_default_img'] = $url_database;
+            }
+        }
+
+
+
+
+        $res = SiteCommonModel::where('site_common_id','=',$id)->update($data);
+        if ($res){
+            return back()->with('success_message','About Update Successfully!');
+        }else{
+            return back()->with('error_message','About Update Fail!');
+        }
+
+    }
+
 
 }

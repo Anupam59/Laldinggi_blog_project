@@ -63,4 +63,5 @@ Route::post('policy-update', [SiteCommonController::class, 'PolicyUpdate']);
 Route::get('terms-edit', [SiteCommonController::class, 'TermsEdit']);
 Route::post('terms-update', [SiteCommonController::class, 'TermsUpdate']);
 
-
+Route::get('info-edit', [SiteCommonController::class, 'InfoEdit']);
+Route::post('info-update', [SiteCommonController::class, 'InfoUpdate']);

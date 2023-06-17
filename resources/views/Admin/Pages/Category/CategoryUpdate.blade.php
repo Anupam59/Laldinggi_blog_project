@@ -127,25 +127,20 @@
 
                                 <input id="showTagId" type="text" class="form-control d-none" name="cat_en_key" value="{{ $Category->cat_en_key }}" placeholder="Category Tag" required>
 
+
                                 <div class="col-md-12 tag_input">
                                     <div class="wrapper">
-
                                         <div class="title">
                                             <label>Tag</label>
                                             <a id="removeBtn">All <i class="fa fa-trash"></i></a>
                                         </div>
-
                                         <div class="content">
-
                                             <ul id="ulId">
                                                 <input id="inputId" type="text" spellcheck="false">
                                             </ul>
                                             <p><span id="detailsItem">10</span> tags are remaining</p>
-
                                         </div>
-
                                     </div>
-
                                 </div>
 
                                 <div class="col-md-12 text-center">

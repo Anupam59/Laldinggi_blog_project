@@ -73,29 +73,28 @@
 
 
 
-                        <form action="{{ url('about-update') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('info-update') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
 
-                                <div class="col-md-6">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Time Zone</label>
+                                        <input type="text" class="form-control" name="time_zone" value="{{ $SiteCommon->time_zone }}" placeholder="Time Zone">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Site Name</label>
                                         <input type="text" class="form-control" name="site_name" value="{{ $SiteCommon->site_name }}" placeholder="Site Name...">
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Time Zone</label>
-                                        <input type="text" class="form-control" name="time_zone" value="{{ $SiteCommon->time_zone }}" placeholder="Title">
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Site Email</label>
-                                        <input type="text" class="form-control" name="site_email" value="{{ $SiteCommon->site_email }}" placeholder="Title">
+                                        <input type="text" class="form-control" name="site_email" value="{{ $SiteCommon->site_email }}" placeholder="Site Email">
                                     </div>
                                 </div>
 
@@ -103,7 +102,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Site Contact</label>
-                                        <input type="text" class="form-control" name="site_contact" value="{{ $SiteCommon->site_contact }}" placeholder="Title">
+                                        <input type="text" class="form-control" name="site_contact" value="{{ $SiteCommon->site_contact }}" placeholder="Site Contact">
                                     </div>
                                 </div>
 
@@ -111,56 +110,157 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Site Contact (বাংলা)</label>
-                                        <input type="text" class="form-control" name="site_bn_contact" value="{{ $SiteCommon->site_bn_contact }}" placeholder="Title">
+                                        <input type="text" class="form-control" name="site_bn_contact" value="{{ $SiteCommon->site_bn_contact }}" placeholder="Site Contact (বাংলা)">
                                     </div>
                                 </div>
+
+
+
+                                <div class="col-md-12">
+                                    <hr class="hr-red">
+                                </div>
+
 
 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Site Title</label>
-                                        <input type="text" class="form-control" name="site_adout_bn_title" value="{{ $SiteCommon->site_adout_bn_title }}" placeholder="Site Title">
+                                        <input type="text" class="form-control" name="site_title" value="{{ $SiteCommon->site_title }}" placeholder="Site Title">
                                     </div>
                                 </div>
 
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Site Description</label>
-                                        <input type="text" class="form-control" name="site_adout_bn_title" value="{{ $SiteCommon->site_adout_bn_title }}" placeholder="Title">
+                                        <label>Site Link</label>
+                                        <input type="text" class="form-control" name="site_link" value="{{ $SiteCommon->site_link }}" placeholder="Site Link">
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Description</label>
-                                        <textarea class="form-control" rows="3" name="site_adout_description" placeholder="Description ...">{{ $SiteCommon->site_adout_description }}</textarea>
-                                    </div>
-                                </div>
 
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Description (বাংলা)</label>
-                                        <textarea class="form-control" rows="3" name="site_adout_bn_description" placeholder="Description (বাংলা) ...">{{ $SiteCommon->site_adout_bn_description }}</textarea>
+                                        <label>Site Description</label>
+                                        <textarea class="form-control" rows="3" name="site_description" placeholder="Site Description ...">{{ $SiteCommon->site_description }}</textarea>
                                     </div>
                                 </div>
+
+
+
+                                <input id="showTagId" type="text" class="form-control d-none" name="site_keyword" value="{{ $SiteCommon->site_keyword }}" placeholder="Site Keyword">
+                                <div class="col-md-12 tag_input">
+                                    <div class="wrapper">
+                                        <div class="title">
+                                            <label>Site Keyword</label>
+                                            <a id="removeBtn">All <i class="fa fa-trash"></i></a>
+                                        </div>
+                                        <div class="content">
+                                            <ul id="ulId">
+                                                <input id="inputId" type="text" spellcheck="false">
+                                            </ul>
+                                            <p><span id="detailsItem">10</span> tags are remaining</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Image</label>
-                                        <input type="file" class="form-control" name="site_adout_img">
+                                        <label>Site Address</label>
+                                        <textarea class="form-control" rows="3" name="site_address" placeholder="Site Address ...">{{ $SiteCommon->site_address }}</textarea>
                                     </div>
                                 </div>
 
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Site Address (বাংলা)</label>
+                                        <textarea class="form-control" rows="3" name="site_bn_address" placeholder="Site Address (বাংলা) ...">{{ $SiteCommon->site_bn_address }}</textarea>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-12">
+                                    <hr class="hr-red">
+                                </div>
+
+
+
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        @if($SiteCommon->site_adout_img)
-                                            <img class="img-fluid w-100" src="{{asset($SiteCommon->site_adout_img)}}" alt="Photo">
+                                        <label>Logo Image</label>
+                                        <input type="file" class="form-control" name="site_logo">
+                                    </div>
+
+                                    <div class="form-group">
+                                        @if($SiteCommon->site_logo)
+                                            <img class="img-fluid w-100" src="{{asset($SiteCommon->site_logo)}}" alt="Photo">
                                         @else
                                             <img class="img-fluid w-100" src="{{asset('Admin/dist/img/photo1.png')}}" alt="Photo">
                                         @endif
                                     </div>
                                 </div>
+
+
+
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Logo Big Image</label>
+                                        <input type="file" class="form-control" name="site_logo_big">
+                                    </div>
+
+                                    <div class="form-group">
+                                        @if($SiteCommon->site_logo_big)
+                                            <img class="img-fluid w-100" src="{{asset($SiteCommon->site_logo_big)}}" alt="Photo">
+                                        @else
+                                            <img class="img-fluid w-100" src="{{asset('Admin/dist/img/photo1.png')}}" alt="Photo">
+                                        @endif
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Favicon Image</label>
+                                        <input type="file" class="form-control" name="site_favicon">
+                                    </div>
+
+                                    <div class="form-group">
+                                        @if($SiteCommon->site_favicon)
+                                            <img class="img-fluid w-100" src="{{asset($SiteCommon->site_favicon)}}" alt="Photo">
+                                        @else
+                                            <img class="img-fluid w-100" src="{{asset('Admin/dist/img/photo1.png')}}" alt="Photo">
+                                        @endif
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Default Image</label>
+                                        <input type="file" class="form-control" name="site_default_img">
+                                    </div>
+
+                                    <div class="form-group">
+                                        @if($SiteCommon->site_default_img)
+                                            <img class="img-fluid w-100" src="{{asset($SiteCommon->site_default_img)}}" alt="Photo">
+                                        @else
+                                            <img class="img-fluid w-100" src="{{asset('Admin/dist/img/photo1.png')}}" alt="Photo">
+                                        @endif
+                                    </div>
+                                </div>
+
+
+
 
                                 <div class="col-md-12 text-center">
                                     <button type="submit" class="btn btn-primary">Update</button>
