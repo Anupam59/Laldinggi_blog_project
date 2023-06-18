@@ -9,12 +9,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Menu Update</h1>
+                        <h1>Sub Menu Create</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}/dashboard">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Menu Update</li>
+                            <li class="breadcrumb-item active">Sub Menu Create</li>
                         </ol>
                     </div>
                 </div>
@@ -30,11 +30,9 @@
                 <div class="card card-default">
 
                     <div class="card-header">
-
                         <a class="btn btn-danger btn-sm add_btn" href="{{ url('/') }}/menu-list">
                             All Data
                         </a>
-
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -43,14 +41,13 @@
                         </div>
                     </div>
 
-
-
                     <div class="card-body">
+
 
 
                         @if ($errors->any())
                             <div class="alert error_success">
-                                <ul>
+                                <ul class="m-0">
                                     @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>
                                     @endforeach
@@ -73,32 +70,56 @@
 
 
 
-
-                        <form action="{{ url('/menu-update/'.$Menu->menu_id)}}" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('sub-menu-entry') }}" method="post" enctype="multipart/form-data">
                             @csrf
 
                             <div class="row">
 
-                                <div class="col-md-7">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Title</label>
-                                        <input type="text" class="form-control" name="menu_title" value="{{ $Menu->menu_title }}" placeholder="Title" required>
+                                        <input type="text" class="form-control" value="{{ old('menu_item_title') }}" name="menu_item_title" placeholder="Title">
                                     </div>
                                 </div>
 
-                                <div class="col-md-5">
+
+                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Status</label>
-                                        <select class="form-control" id="cat_status" name="status">
+                                        <label>Title (বাংলা)</label>
+                                        <input type="text" class="form-control" value="{{ old('menu_item_bn_title') }}" name="menu_item_bn_title" placeholder="Title (বাংলা)">
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Link</label>
+                                        <input type="text" class="form-control" value="{{ old('menu_item_link') }}" name="menu_item_link" placeholder="Title">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Category</label>
+                                        <select class="form-control select2" id="cat_id" name="cat_id" required>
                                             <option value=" " selected="selected">Select One</option>
-                                            <option value="1" @if($Menu->status == "1") {{ 'selected' }} @endif>Active</option>
-                                            <option value="2" @if($Menu->status == "2") {{ 'selected' }} @endif>Inactive</option>
+
+                                            @if(!$Menu->isEmpty())
+                                                @foreach($Menu as $MenuItem)
+                                                    <option value="{{ $MenuItem->menu_id }}"> {{ $MenuItem->menu_title }}</option>
+                                                @endforeach
+                                            @else
+
+                                            @endif
+
                                         </select>
                                     </div>
                                 </div>
 
+
                                 <div class="col-md-12 text-center">
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn btn-primary">Create</button>
                                 </div>
 
                             </div>
@@ -116,7 +137,8 @@
 
 @section('script')
     <script>
-        $('#cat_status').select2();
-    </script>
 
+        $('#cat_status').select2();
+
+    </script>
 @endsection

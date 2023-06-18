@@ -70,3 +70,10 @@ Route::get('menu-create', [MenuController::class, 'MenuCreate']);
 Route::post('menu-entry', [MenuController::class, 'MenuEntry']);
 Route::get('menu-edit/{id}', [MenuController::class, 'MenuEdit']);
 Route::post('menu-update/{id}', [MenuController::class, 'MenuUpdate']);
+
+
+Route::get('sub-menu-list', [MenuController::class, 'SubMenuIndex']);
+Route::get('sub-menu-create', [MenuController::class, 'SubMenuCreate']);
+Route::post('sub-menu-entry', [MenuController::class, 'SubMenuEntry']);
+Route::get('sub-menu-edit/{id}', [MenuController::class, 'SubMenuEdit']);
+Route::post('sub-menu-update/{id}', [MenuController::class, 'SubMenuUpdate']);
