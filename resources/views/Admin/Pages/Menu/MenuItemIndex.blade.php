@@ -11,12 +11,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Sub Menu</h1>
+                        <h1>Menu Item</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}/">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Sub Menu</li>
+                            <li class="breadcrumb-item active">Menu Item</li>
                         </ol>
                     </div>
                 </div>
@@ -30,13 +30,13 @@
 
 
 
-        @if(!$SubMenu->isEmpty())
+        @if(!$MenuI->isEmpty())
 
             <!-- Default box -->
                 <div class="card">
                     <div class="card-header">
 
-                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/') }}/sub-menu-create">
+                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/') }}/menu-item-create">
                             Add <i class="fas fa-plus"></i>
                         </a>
 
@@ -57,50 +57,50 @@
                                 <th style="width: 1%">
                                     SL
                                 </th>
-                                <th style="width: 30%">
+                                <th style="width: 20%">
                                     Title
                                 </th>
                                 <th style="width: 30%">
                                     Link
                                 </th>
-                                <th style="width: 30%">
+                                <th style="width: 20%">
                                     Menu
                                 </th>
                                 <th class="text-center">
                                     Status
                                 </th>
-                                <th style="width: 20%" class="text-right">
+                                <th style="width: 30%" class="text-right">
                                     Action
                                 </th>
                             </tr>
                             </thead>
                             <tbody>
 
-                            @foreach($SubMenu as $key=>$SubMenuItem)
+                            @foreach($MenuI as $key=>$MenuItem)
 
                                 <tr>
                                     <td>{{ $key+1 }}</td>
 
                                     <td>
-                                        <a>{{ $SubMenuItem->menu_item_title }}</a>
+                                        <a>{{ $MenuItem->menu_item_title }}</a>
                                         <br>
-                                        <small>{{ $SubMenuItem->menu_item_bn_title }}</small>
+                                        <small>{{ $MenuItem->menu_item_bn_title }}</small>
                                     </td>
 
 
                                     <td>
-                                        <a>{{ $SubMenuItem->menu_item_link }}</a>
+                                        <a>{{ $MenuItem->menu_item_link }}</a>
                                     </td>
 
                                     <td>
-                                        <a>{{ $SubMenuItem->menu_title }}</a>
+                                        <a>{{ $MenuItem->menu_title }}</a>
                                     </td>
 
 
                                     <td class="project-state">
-                                        @if($SubMenuItem->status == 1)
+                                        @if($MenuItem->status == 1)
                                             <span class="badge badge-success">Active</span>
-                                        @elseif($SubMenuItem->status == 2)
+                                        @elseif($MenuItem->status == 2)
                                             <span class="badge badge-danger">Inactive</span>
                                         @endif
                                     </td>
@@ -108,7 +108,7 @@
 
                                     <td class="project-actions text-right">
 
-                                        <a class="btn btn-primary btn-sm" href="{{ url('/') }}/menu-edit/{{ $SubMenuItem->menu_id }}">
+                                        <a class="btn btn-primary btn-sm" href="{{ url('/') }}/menu-item-edit/{{ $MenuItem->menu_item_id }}">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
 
@@ -117,7 +117,6 @@
                                         </a>
 
                                     </td>
-
 
 
                                 </tr>
@@ -133,7 +132,7 @@
 
                 <div class="row">
                     <div class="col d-flex align-items-center justify-content-center">
-                        {{ $SubMenu->onEachSide(3)->links('Admin.Common.Paginate') }}
+                        {{ $MenuI->onEachSide(3)->links('Admin.Common.Paginate') }}
                     </div>
                 </div>
 

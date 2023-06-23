@@ -9,12 +9,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Sub Menu Create</h1>
+                        <h1>Menu Item Create</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}/dashboard">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Sub Menu Create</li>
+                            <li class="breadcrumb-item active">Menu Item Create</li>
                         </ol>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                 <div class="card card-default">
 
                     <div class="card-header">
-                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/') }}/menu-list">
+                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/') }}/menu-item-list">
                             All Data
                         </a>
 
@@ -70,12 +70,12 @@
 
 
 
-                        <form action="{{ url('sub-menu-entry') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('menu-item-entry') }}" method="post" enctype="multipart/form-data">
                             @csrf
 
                             <div class="row">
 
-                                <div class="col-md-12">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Title</label>
                                         <input type="text" class="form-control" value="{{ old('menu_item_title') }}" name="menu_item_title" placeholder="Title">
@@ -83,7 +83,7 @@
                                 </div>
 
 
-                                <div class="col-md-12">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Title (বাংলা)</label>
                                         <input type="text" class="form-control" value="{{ old('menu_item_bn_title') }}" name="menu_item_bn_title" placeholder="Title (বাংলা)">
@@ -92,17 +92,10 @@
 
 
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Link</label>
-                                        <input type="text" class="form-control" value="{{ old('menu_item_link') }}" name="menu_item_link" placeholder="Title">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Category</label>
-                                        <select class="form-control select2" id="cat_id" name="cat_id" required>
+                                        <select class="form-control select2" id="menu_id" name="menu_id" required>
                                             <option value=" " selected="selected">Select One</option>
 
                                             @if(!$Menu->isEmpty())
@@ -116,6 +109,16 @@
                                         </select>
                                     </div>
                                 </div>
+
+
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Link</label>
+                                        <input type="text" class="form-control" value="{{ old('menu_item_link') }}" name="menu_item_link" placeholder="Title">
+                                    </div>
+                                </div>
+
 
 
                                 <div class="col-md-12 text-center">
@@ -138,7 +141,7 @@
 @section('script')
     <script>
 
-        $('#cat_status').select2();
+        $('#menu_id').select2();
 
     </script>
 @endsection
