@@ -72,8 +72,19 @@ Route::get('menu-edit/{id}', [MenuController::class, 'MenuEdit']);
 Route::post('menu-update/{id}', [MenuController::class, 'MenuUpdate']);
 
 
+
 Route::get('menu-item-list', [MenuController::class, 'MenuItemIndex']);
 Route::get('menu-item-create', [MenuController::class, 'MenuItemCreate']);
 Route::post('menu-item-entry', [MenuController::class, 'MenuItemEntry']);
 Route::get('menu-item-edit/{id}', [MenuController::class, 'MenuItemEdit']);
 Route::post('menu-item-update/{id}', [MenuController::class, 'MenuItemUpdate']);
+
+
+
+Route::get('menu-sub-item-list', [MenuController::class, 'MenuSubItemIndex']);
+Route::get('menu-sub-item-create', [MenuController::class, 'MenuSubItemCreate']);
+Route::post('menu-sub-item-entry', [MenuController::class, 'MenuSubItemEntry']);
+Route::get('menu-sub-item-edit/{id}', [MenuController::class, 'MenuSubItemEdit']);
+Route::post('menu-sub-item-update/{id}', [MenuController::class, 'MenuSubItemUpdate']);
+
+
