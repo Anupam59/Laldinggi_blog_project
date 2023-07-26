@@ -17,6 +17,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- select2 -->
     <link rel="stylesheet" href="{{asset('Admin/dist/css/select2.min.css')}}">
 
+    <!-- summernote -->
+    <link rel="stylesheet" href="{{asset('Admin/summernote/summernote-bs4.css')}}">
+
     <!-- Unicons CDN Link for Icons -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/thinline.css">
 
@@ -154,6 +157,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- Select2 App -->
 <script src="{{asset('Admin/dist/js/select2.min.js')}}"></script>
+
+<!-- summernote -->
+<script src="{{asset('Admin/summernote/summernote-bs4.js')}}"></script>
+
+<!-- axios.min.js -->
+<script src="{{asset('Admin/dist/js/axios.min.js')}}"></script>
 
 <!-- AdminLTE App -->
 <script src="{{asset('Admin/dist/js/adminlte.min.js')}}"></script>

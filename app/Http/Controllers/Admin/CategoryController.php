@@ -21,8 +21,6 @@ class CategoryController extends Controller
         return view('Admin/Pages/Category/CategoryIndex',compact('Category'));
     }
 
-
-
     public function CategoryCreate(){
         return view('Admin/Pages/Category/CategoryCreate');
     }
@@ -62,13 +60,10 @@ class CategoryController extends Controller
 
     }
 
-
-
     public function CategoryEdit($id){
         $Category = CategoryModel::where('cat_id',$id)->first();
         return view('Admin/Pages/Category/CategoryUpdate',compact('Category'));
     }
-
 
     public function CategoryUpdate(Request $request, $id){
 
@@ -104,4 +99,5 @@ class CategoryController extends Controller
         }
 
     }
+
 }

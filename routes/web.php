@@ -3,8 +3,11 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\NewsPageController;
+use App\Http\Controllers\Admin\NewsTypeController;
 use App\Http\Controllers\Admin\SiteCommonController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Admin\SubSubCategoryController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\CustomAuthController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -51,6 +54,14 @@ Route::get('sub-category-edit/{id}', [SubCategoryController::class, 'SubCategory
 Route::post('sub-category-update/{id}', [SubCategoryController::class, 'SubCategoryUpdate']);
 
 
+Route::get('sub-sub-category-list', [SubSubCategoryController::class, 'SubSubCategoryIndex']);
+Route::get('sub-sub-category-create', [SubSubCategoryController::class, 'SubSubCategoryCreate']);
+Route::post('sub-sub-category-entry', [SubSubCategoryController::class, 'SubSubCategoryEntry']);
+Route::get('sub-sub-category-edit/{id}', [SubSubCategoryController::class, 'SubSubCategoryEdit']);
+Route::post('sub-sub-category-update/{id}', [SubSubCategoryController::class, 'SubSubCategoryUpdate']);
+Route::post('SubCategoryGetData',[SubSubCategoryController::class,'SubCategoryGetData']);
+
+
 
 Route::get('about-edit', [SiteCommonController::class, 'AboutEdit']);
 Route::post('about-update', [SiteCommonController::class, 'AboutUpdate']);
@@ -86,5 +97,30 @@ Route::get('menu-sub-item-create', [MenuController::class, 'MenuSubItemCreate'])
 Route::post('menu-sub-item-entry', [MenuController::class, 'MenuSubItemEntry']);
 Route::get('menu-sub-item-edit/{id}', [MenuController::class, 'MenuSubItemEdit']);
 Route::post('menu-sub-item-update/{id}', [MenuController::class, 'MenuSubItemUpdate']);
+
+Route::post('MenuItemGetData',[MenuController::class,'MenuItemGetData']);
+Route::post('MenuSubItemGetData',[MenuController::class,'MenuSubItemGetData']);
+
+Route::get('menu-sub-sub-item-list', [MenuController::class, 'MenuSubSubItemIndex']);
+Route::get('menu-sub-sub-item-create', [MenuController::class, 'MenuSubSubItemCreate']);
+Route::post('menu-sub-sub-item-entry', [MenuController::class, 'MenuSubSubItemEntry']);
+Route::get('menu-sub-sub-item-edit/{id}', [MenuController::class, 'MenuSubSubItemEdit']);
+Route::post('menu-sub-sub-item-update/{id}', [MenuController::class, 'MenuSubSubItemUpdate']);
+
+
+
+
+Route::get('news-page-list', [NewsPageController::class, 'NewsPageIndex']);
+Route::get('news-page-create', [NewsPageController::class, 'NewsPageCreate']);
+Route::post('news-page-entry', [NewsPageController::class, 'NewsPageEntry']);
+Route::get('news-page-edit/{id}', [NewsPageController::class, 'NewsPageEdit']);
+Route::post('news-page-update/{id}', [NewsPageController::class, 'NewsPageUpdate']);
+
+
+Route::get('news-type-list', [NewsTypeController::class, 'NewsTypeIndex']);
+Route::get('news-type-create', [NewsTypeController::class, 'NewsTypeCreate']);
+Route::post('news-type-entry', [NewsTypeController::class, 'NewsTypeEntry']);
+Route::get('news-type-edit/{id}', [NewsTypeController::class, 'NewsTypeEdit']);
+Route::post('news-type-update/{id}', [NewsTypeController::class, 'NewsTypeUpdate']);
 
 

@@ -30,7 +30,7 @@
 
 
 
-        @if(!$MenuI->isEmpty())
+        @if($MenuSubItem)
 
             <!-- Default box -->
                 <div class="card">

@@ -80,42 +80,42 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Title</label>
-                                        <input type="text" class="form-control" name="site_adout_title" value="{{ $SiteCommon->site_adout_title }}" placeholder="Title">
+                                        <input type="text" class="form-control" name="site_about_title" value="{{ $SiteCommon->site_about_title }}" placeholder="Title">
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Title (বাংলা)</label>
-                                        <input type="text" class="form-control" name="site_adout_bn_title" value="{{ $SiteCommon->site_adout_bn_title }}" placeholder="Title">
+                                        <input type="text" class="form-control" name="site_about_bn_title" value="{{ $SiteCommon->site_about_bn_title }}" placeholder="Title">
                                     </div>
                                 </div>
 
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <textarea class="form-control" rows="3" name="site_adout_description" placeholder="Description ...">{{ $SiteCommon->site_adout_description }}</textarea>
+                                        <textarea class="form-control" id="SiteAboutDescId" name="site_about_description" placeholder="Description ...">{{ $SiteCommon->site_about_description }}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Description (বাংলা)</label>
-                                        <textarea class="form-control" rows="3" name="site_adout_bn_description" placeholder="Description (বাংলা) ...">{{ $SiteCommon->site_adout_bn_description }}</textarea>
+                                        <textarea class="form-control" id="SiteAboutDescBnId" name="site_about_bn_description" placeholder="Description (বাংলা) ...">{{ $SiteCommon->site_about_bn_description }}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Image</label>
-                                        <input type="file" class="form-control" name="site_adout_img">
+                                        <input type="file" class="form-control" name="site_about_img">
                                     </div>
                                 </div>
 
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                    @if($SiteCommon->site_adout_img)
-                                        <img class="img-fluid w-100" src="{{asset($SiteCommon->site_adout_img)}}" alt="Photo">
+                                    @if($SiteCommon->site_about_img)
+                                        <img class="img-fluid w-100" src="{{asset($SiteCommon->site_about_img)}}" alt="Photo">
                                     @else
                                         <img class="img-fluid w-100" src="{{asset('Admin/dist/img/photo1.png')}}" alt="Photo">
                                     @endif
@@ -143,6 +143,15 @@
     <script>
 
         $('#cat_status').select2();
+
+        $('#SiteAboutDescId').summernote({
+            placeholder: 'Site About Description',
+            height: 120,
+        });
+        $('#SiteAboutDescBnId').summernote({
+            placeholder: 'Site About Description',
+            height: 120,
+        });
 
     </script>
 @endsection

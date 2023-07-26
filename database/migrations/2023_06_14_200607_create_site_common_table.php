@@ -41,11 +41,11 @@ return new class extends Migration
             $table->string('site_default_img',100)->nullable();
 
 
-            $table->string('site_adout_title',200)->nullable();
-            $table->text('site_adout_description')->nullable();
-            $table->string('site_adout_bn_title',200)->nullable();
-            $table->text('site_adout_bn_description')->nullable();
-            $table->string('site_adout_img',100)->nullable();
+            $table->string('site_about_title',200)->nullable();
+            $table->text('site_about_description')->nullable();
+            $table->string('site_about_bn_title',200)->nullable();
+            $table->text('site_about_bn_description')->nullable();
+            $table->string('site_about_img',100)->nullable();
 
 
             $table->text('site_privacy_policy')->nullable();

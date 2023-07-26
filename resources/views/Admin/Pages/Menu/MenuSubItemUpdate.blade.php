@@ -102,7 +102,7 @@
                                         <select class="form-control select2" id="menu_id" name="menu_id" required>
                                             <option value=" " selected="selected">Select One</option>
 
-                                            @if(!$Menu->isEmpty())
+                                            @if($Menu)
                                                 @foreach($Menu as $MenuI)
                                                     <option value="{{ $MenuI->menu_id }}" @if($MenuI->menu_id == $MenuSubItem->menu_id) {{ 'selected' }} @endif> {{ $MenuI->menu_title }}</option>
                                                 @endforeach
@@ -117,12 +117,13 @@
 
 
                                 <div class="col-md-6">
+
                                     <div class="form-group">
                                         <label>Menu Item</label>
                                         <select class="form-control select2" id="menu_item_id" name="menu_item_id" required>
                                             <option value=" " selected="selected">Select One</option>
 
-                                            @if(!$MenuItem->isEmpty())
+                                            @if($MenuItem)
                                                 @foreach($MenuItem as $MenuItemI)
                                                     <option value="{{ $MenuItemI->menu_item_id }}" @if($MenuItemI->menu_item_id == $MenuSubItem->menu_item_id) {{ 'selected' }} @endif> {{ $MenuItemI->menu_item_title }}</option>
                                                 @endforeach
@@ -179,6 +180,21 @@
         $('#menu_id').select2();
         $('#menu_item_id').select2();
         $('#cat_status').select2();
+
+
+
+        $('#menu_id').on('change',function (e){
+            var menu_id = e.target.value;
+            axios.post('/MenuItemGetData',{menu_id:menu_id}).then(function (response) {
+                var JsonData = response.data;
+                $('#menu_item_id').empty();
+                $('#menu_item_id').append( JsonData );
+
+            });
+        });
+
+
+
     </script>
 
 @endsection

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('cat_en_desc',300);
             $table->string('cat_bn_desc',300);
 
-            $table->string('cat_en_key',300);
+            $table->string('cat_en_key',300)->nullable();
             $table->string('cat_bn_key',300)->nullable();
 
             $table->tinyInteger('status')->default(1);

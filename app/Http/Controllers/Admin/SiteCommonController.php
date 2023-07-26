@@ -13,11 +13,11 @@ class SiteCommonController extends Controller
         $id = 1;
         $SiteCommon = SiteCommonModel::where('site_common_id',$id)
             ->select(
-                'site_adout_title',
-                'site_adout_bn_title',
-                'site_adout_description',
-                'site_adout_bn_description',
-                'site_adout_img',
+                'site_about_title',
+                'site_about_bn_title',
+                'site_about_description',
+                'site_about_bn_description',
+                'site_about_img',
             )->first();
 
         return view('Admin/Pages/SiteCommon/About',compact('SiteCommon'));
@@ -26,29 +26,29 @@ class SiteCommonController extends Controller
     public function AboutUpdate(Request $request){
         $id = 1;
         $data =  array();
-        $data['site_adout_title'] = $request->site_adout_title;
-        $data['site_adout_bn_title'] = $request->site_adout_bn_title;
-        $data['site_adout_description'] = $request->site_adout_description;
-        $data['site_adout_bn_description'] = $request->site_adout_bn_description;
+        $data['site_about_title'] = $request->site_about_title;
+        $data['site_about_bn_title'] = $request->site_about_bn_title;
+        $data['site_about_description'] = $request->site_about_description;
+        $data['site_about_bn_description'] = $request->site_about_bn_description;
         $data['modifier'] = 1;
         $data['modified_date'] = date("Y-m-d h:i:s");
 
-        $img =  $request->file('site_adout_img');
+        $img =  $request->file('site_about_img');
         if ($img){
-            $ImageName ='adout_img.'.$img->getClientOriginalExtension();
+            $ImageName ='about_img.'.$img->getClientOriginalExtension();
             $Path = "Images/site-info/";
             $ResizeImage = Image::make($img)->resize(490,380);
             $url = $Path.$ImageName;
             $url_database = "/".$Path.$ImageName;
             $ResizeImage ->save($url);
-            $OldData = SiteCommonModel::where('site_common_id','=',$id)->select('site_adout_img')->first();
-            $OldImage = $OldData->site_adout_img;
+            $OldData = SiteCommonModel::where('site_common_id','=',$id)->select('site_about_img')->first();
+            $OldImage = $OldData->site_about_img;
             $OldImageUrl = substr($OldImage, 1);
             if ($OldImage){
                 unlink($OldImageUrl);
-                $data['site_adout_img'] = $url_database;
+                $data['site_about_img'] = $url_database;
             }else{
-                $data['site_adout_img'] = $url_database;
+                $data['site_about_img'] = $url_database;
             }
         }
 

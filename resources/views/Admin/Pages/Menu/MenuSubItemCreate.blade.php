@@ -91,38 +91,35 @@
                                 </div>
 
 
-                                {{$Menu}}, {{ $MenuItem }}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Menu</label>
+                                        <select class="form-control select2" id="menu_id" name="menu_id" required>
+                                            <option value=" " selected="selected">Select One</option>
+
+                                            @if($Menu)
+                                                @foreach($Menu as $MenuI)
+                                                    <option value="{{ $MenuI->menu_id }}"> {{ $MenuI->menu_title }}</option>
+                                                @endforeach
+                                            @else
+
+                                            @endif
+
+                                        </select>
+                                    </div>
+                                </div>
 
 
 
-{{--                                <div class="col-md-6">--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <label>Menu</label>--}}
-{{--                                        <select class="form-control select2" id="menu_id" name="menu_id" required>--}}
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Menu Item</label>
+                                        <select class="form-control select2" id="menu_item_id" name="menu_item_id" required>
+
 {{--                                            <option value=" " selected="selected">Select One</option>--}}
 
-{{--                                            @if(!$Menu->isEmpty())--}}
-{{--                                                @foreach($Menu as $MenuItem)--}}
-{{--                                                    <option value="{{ $MenuItem->menu_id }}"> {{ $MenuItem->menu_title }}</option>--}}
-{{--                                                @endforeach--}}
-{{--                                            @else--}}
-
-{{--                                            @endif--}}
-
-{{--                                        </select>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-
-
-
-
-{{--                                <div class="col-md-6">--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <label>Menu Item</label>--}}
-{{--                                        <select class="form-control select2" id="menu_item_id" name="menu_item_id" required>--}}
-{{--                                            <option value=" " selected="selected">Select One</option>--}}
-
-{{--                                            @if(!$MenuItem->isEmpty())--}}
+{{--                                            @if($MenuItem)--}}
 {{--                                                @foreach($MenuItem as $MenuItemI)--}}
 {{--                                                    <option value="{{ $MenuItemI->menu_item_id }}"> {{ $MenuItemI->menu_item_title }}</option>--}}
 {{--                                                @endforeach--}}
@@ -130,9 +127,9 @@
 
 {{--                                            @endif--}}
 
-{{--                                        </select>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
+                                        </select>
+                                    </div>
+                                </div>
 
 
 
@@ -167,6 +164,18 @@
 
         $('#menu_id').select2();
         $('#menu_item_id').select2();
+
+
+        $('#menu_id').on('change',function (e){
+            var menu_id = e.target.value;
+            //UpazilaInput
+            axios.post('/MenuItemGetData',{menu_id:menu_id}).then(function (response) {
+                var JsonData = response.data;
+                $('#menu_item_id').empty();
+                $('#menu_item_id').append( JsonData );
+            });
+
+        });
 
     </script>
 @endsection

@@ -23,8 +23,6 @@ class SubCategoryController extends Controller
         return view('Admin/Pages/SubCategory/SubCategoryIndex',compact('SubCategory'));
     }
 
-
-
     public function SubCategoryCreate(){
         $Category = CategoryModel::where('status',1)->get();
         return view('Admin/Pages/SubCategory/SubCategoryCreate',compact('Category'));
@@ -67,14 +65,11 @@ class SubCategoryController extends Controller
 
     }
 
-
-
     public function SubCategoryEdit($id){
         $Category = CategoryModel::where('status',1)->get();
         $SubCategory = SubCategoryModel::where('sub_cat_id',$id)->first();
         return view('Admin/Pages/SubCategory/SubCategoryUpdate',compact('SubCategory','Category'));
     }
-
 
     public function SubCategoryUpdate(Request $request, $id){
 
@@ -110,4 +105,6 @@ class SubCategoryController extends Controller
         }
 
     }
+
+
 }
