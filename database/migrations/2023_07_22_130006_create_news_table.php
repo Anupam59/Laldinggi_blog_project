@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -14,9 +15,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('news', function (Blueprint $table) {
-            $table->increments('news_id');
-            $table->string('news_head_title',400);
-            $table->string('news_slug',400);
+            $table->bigIncrements('news_id');
+            $table->string('news_head_title',300);
+            $table->string('news_slug',350);
             $table->string('news_head_caption_tag',150)->nullable();
             $table->string('news_details_brief',500)->nullable();
             $table->longText('news_details')->nullable();
@@ -33,8 +34,10 @@ return new class extends Migration
             $table->string('news_source',300)->nullable();
             $table->string('news_source_link',300)->nullable();
 
-            $table->string('news_area',100)->nullable();
             $table->string('news_zone',100)->nullable();
+            $table->tinyInteger('division_id')->nullable();
+            $table->tinyInteger('district_id')->nullable();
+            $table->tinyInteger('upazila_id')->nullable();
 
             $table->string('news_writer',300)->nullable();
             $table->string('news_reporter',300)->nullable();
