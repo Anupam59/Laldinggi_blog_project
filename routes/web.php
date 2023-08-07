@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\NewsPageController;
+use App\Http\Controllers\Admin\NewsStatusController;
 use App\Http\Controllers\Admin\NewsTypeController;
 use App\Http\Controllers\Admin\SiteCommonController;
 use App\Http\Controllers\Admin\SubCategoryController;
@@ -122,5 +123,12 @@ Route::get('news-type-create', [NewsTypeController::class, 'NewsTypeCreate']);
 Route::post('news-type-entry', [NewsTypeController::class, 'NewsTypeEntry']);
 Route::get('news-type-edit/{id}', [NewsTypeController::class, 'NewsTypeEdit']);
 Route::post('news-type-update/{id}', [NewsTypeController::class, 'NewsTypeUpdate']);
+
+
+Route::get('news-status-list', [NewsStatusController::class, 'NewsStatusIndex']);
+Route::get('news-status-create', [NewsStatusController::class, 'NewsStatusCreate']);
+Route::post('news-status-entry', [NewsStatusController::class, 'NewsStatusEntry']);
+Route::get('news-status-edit/{id}', [NewsStatusController::class, 'NewsStatusEdit']);
+Route::post('news-status-update/{id}', [NewsStatusController::class, 'NewsStatusUpdate']);
 
 

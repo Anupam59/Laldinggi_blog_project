@@ -55,7 +55,7 @@ return new class extends Migration
             $table->integer('approver')->nullable();
             $table->integer('creator');
             $table->integer('modifier');
-            $table->timestamp('publish_date');
+            $table->timestamp('publish_date')->nullable();
             $table->timestamp('created_date')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('modified_date')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
