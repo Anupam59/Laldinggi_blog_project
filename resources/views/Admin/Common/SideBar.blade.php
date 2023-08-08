@@ -37,7 +37,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ url('/') }}/dashboard" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>Dashboard</p>
                     </a>
@@ -55,35 +55,35 @@
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('/') }}/info-edit" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Info</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('/') }}/about-edit" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>About</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('/') }}/policy-edit" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Policy</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('/') }}/terms-edit" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Terms</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('/') }}/communication-edit" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Communication</p>
                             </a>
@@ -105,42 +105,42 @@
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('/') }}/category-list" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Category</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('/') }}/sub-category-list" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Sub Category</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('/') }}/sub-sub-category-list" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Sub Sub Category</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('/') }}/news-page-list" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>News Page</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('/') }}/news-type-list" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>News Type</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('/') }}/news-status-list" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>News Status</p>
                             </a>
@@ -161,28 +161,28 @@
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('/') }}/menu-list" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Menu</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('/') }}/menu-item-list" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Menu Item</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('/') }}/menu-sub-item-list" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Menu Sub Item</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('/') }}/menu-sub-sub-item-list" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Menu Sub Sub Item</p>
                             </a>
@@ -204,14 +204,14 @@
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('/') }}/dashboard" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>News List</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('/') }}/dashboard" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>News Create</p>
                             </a>
