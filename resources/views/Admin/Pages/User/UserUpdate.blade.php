@@ -9,12 +9,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Category Create</h1>
+                        <h1>User Update</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}/dashboard">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Category Create</li>
+                            <li class="breadcrumb-item active">User Update</li>
                         </ol>
                     </div>
                 </div>
@@ -30,9 +30,11 @@
                 <div class="card card-default">
 
                     <div class="card-header">
-                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/') }}/category-list">
+
+                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/') }}/user-list">
                             All Data
                         </a>
+
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -41,13 +43,14 @@
                         </div>
                     </div>
 
-                    <div class="card-body">
 
+
+                    <div class="card-body">
 
 
                         @if ($errors->any())
                             <div class="alert error_success">
-                                <ul class="m-0">
+                                <ul>
                                     @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>
                                     @endforeach
@@ -71,72 +74,71 @@
 
 
 
-
-                        <form action="{{ url('category-entry') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('/user-update/'.$User->id)}}" method="post" enctype="multipart/form-data">
                             @csrf
 
                             <div class="row">
 
-                                <div class="col-md-7">
-                                    <div class="form-group">
-                                        <label>Title</label>
-                                        <input type="text" class="form-control" value="{{ old('cat_title') }}" name="cat_title" placeholder="Title">
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Name</label>
-                                        <input type="text" class="form-control" value="{{ old('cat_en_name') }}" name="cat_en_name" placeholder="Name">
+                                        <input type="text" class="form-control" value="{{ $User->name }}" name="name" placeholder="Name" required>
                                     </div>
                                 </div>
 
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        <input type="text" class="form-control" value="{{ $User->username }}" name="username" placeholder="Username" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Role</label>
+                                        <select class="form-control select2" id="role_id" name="role_id" required>
+                                            <option value=" " selected="selected">Select One</option>
+                                            @if(!$Role->isEmpty())
+                                                @foreach($Role as $RoleItem)
+                                                    <option value="{{ $RoleItem->role_id }}" @if($RoleItem->role_id == $User->role_id) {{ 'selected' }} @endif> {{ $RoleItem->role_title }}</option>
+                                                @endforeach
+                                            @else
+
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Name (বাংলা)</label>
-                                        <input type="text" class="form-control" value="{{ old('cat_bn_name') }}" name="cat_bn_name" placeholder="Name (বাংলা)">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" value="{{ $User->email }}" name="email" placeholder="Email" required>
                                     </div>
                                 </div>
-
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Description</label>
-                                        <input type="text" class="form-control" value="{{ old('cat_en_desc') }}" name="cat_en_desc" placeholder="Description">
+                                        <label>Number</label>
+                                        <input type="text" class="form-control" value="{{ $User->number }}" name="number" placeholder="Number" required>
                                     </div>
                                 </div>
 
 
-                                <div class="col-md-6">
+
+
+                                <div class="col-md-5">
                                     <div class="form-group">
-                                        <label>Description (বাংলা)</label>
-                                        <input type="text" class="form-control" value="{{ old('cat_bn_desc') }}" name="cat_bn_desc" placeholder="Description (বাংলা)">
+                                        <label>Status</label>
+                                        <select class="form-control" id="status" name="status">
+                                            <option value="" selected="selected">Select One</option>
+                                            <option value="1" @if($User->status == "1") {{ 'selected' }} @endif>Active</option>
+                                            <option value="2" @if($User->status == "2") {{ 'selected' }} @endif>Inactive</option>
+                                        </select>
                                     </div>
                                 </div>
-
-
-                                <input id="showTagId" type="text" class="form-control d-none" value="{{ old('cat_en_key') }}" name="cat_en_key" placeholder="Category Tag">
-
-                                <div class="col-md-12 tag_input">
-                                    <div class="wrapper">
-                                        <div class="title">
-                                            <label>Tag</label>
-                                            <a id="removeBtn">All <i class="fa fa-trash"></i></a>
-                                        </div>
-                                        <div class="content">
-                                            <ul id="ulId">
-                                                <input id="inputId" type="text" spellcheck="false">
-                                            </ul>
-                                            <p><span id="detailsItem">10</span> tags are remaining</p>
-                                        </div>
-                                    </div>
-                                </div>
-
 
                                 <div class="col-md-12 text-center">
-                                    <button type="submit" class="btn btn-primary">Create</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
 
                             </div>
@@ -154,8 +156,8 @@
 
 @section('script')
     <script>
-
-        $('#cat_status').select2();
-
+        $('#role_id').select2();
+        $('#status').select2();
     </script>
+
 @endsection

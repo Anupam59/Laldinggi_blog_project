@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\NewsPageController;
 use App\Http\Controllers\Admin\NewsStatusController;
 use App\Http\Controllers\Admin\NewsTypeController;
@@ -37,7 +38,11 @@ Route::middleware('isLoggedIn')->group(function (){
 
 Route::get('dashboard', [DashboardController::class, 'DashboardIndex']);
 
+
 Route::get('user-list', [UserController::class, 'UserIndex']);
+Route::get('user-create', [UserController::class,'UserCreate']);
+Route::post('user-entry', [UserController::class, 'UserEntry']);
+Route::get('user-edit/{id}', [UserController::class, 'UserEdit']);
 
 
 Route::get('category-list', [CategoryController::class, 'CategoryIndex']);
@@ -130,5 +135,9 @@ Route::get('news-status-create', [NewsStatusController::class, 'NewsStatusCreate
 Route::post('news-status-entry', [NewsStatusController::class, 'NewsStatusEntry']);
 Route::get('news-status-edit/{id}', [NewsStatusController::class, 'NewsStatusEdit']);
 Route::post('news-status-update/{id}', [NewsStatusController::class, 'NewsStatusUpdate']);
+
+
+Route::get('news-create', [NewsController::class, 'NewsCreate']);
+
 
 

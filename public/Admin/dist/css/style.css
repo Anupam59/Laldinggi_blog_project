@@ -19,3 +19,10 @@
     background-color: #dc3545;
     height: 1px;
 }
+.dark-mode input{
+    background-color: #343a40;
+    color: #fff;
+}
+.dark-mode .tag_input .content ul {
+    border: 1px solid #6c757d;
+}

@@ -1,9 +1,10 @@
 const ul = document.querySelector("#ulId"),
     input = document.querySelector("#inputId"),
-    tagNumb = document.querySelector("#detailsItem");
+    tagNumb = document.querySelector("#detailsItem"),
+    removeBtn = document.querySelector("#removeBtn"),
+    showTagId = document.querySelector("#showTagId");
+let maxTags = 10, tags = [];
 
-let maxTags = 10,
-    tags = [];
 
 showArrayCreate();
 countTags();
@@ -11,34 +12,33 @@ createTag();
 showArray();
 
 
-
-function countTags(){
+function countTags() {
     input.focus();
     tagNumb.innerText = maxTags - tags.length;
     showArray();
 }
 
-function createTag(){
+function createTag() {
     ul.querySelectorAll("li").forEach(li => li.remove());
-    tags.slice().reverse().forEach(tag =>{
+    tags.slice().reverse().forEach(tag => {
         let liTag = `<li>${tag} <i class="uit uit-multiply" onclick="remove(this, '${tag}')"></i></li>`;
         ul.insertAdjacentHTML("afterbegin", liTag);
     });
     countTags();
 }
 
-function remove(element, tag){
-    let index  = tags.indexOf(tag);
+function remove(element, tag) {
+    let index = tags.indexOf(tag);
     tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
     element.parentElement.remove();
     countTags();
 }
 
-function addTag(e){
-    if(e.key == "Enter"){
+function addTag(e) {
+    if (e.key == "Enter") {
         let tag = e.target.value.replace(/\s+/g, ' ');
-        if(tag.length > 1 && !tags.includes(tag)){
-            if(tags.length < 10){
+        if (tag.length > 1 && !tags.includes(tag)) {
+            if (tags.length < 10) {
                 tag.split(',').forEach(tag => {
                     tags.push(tag);
                     createTag();
@@ -51,29 +51,25 @@ function addTag(e){
 
 input.addEventListener("keyup", addTag);
 
-const removeBtn = document.querySelector("#removeBtn");
-
-removeBtn.addEventListener("click", () =>{
+removeBtn.addEventListener("click", () => {
     tags.length = 0;
     ul.querySelectorAll("li").forEach(li => li.remove());
     countTags();
 });
 
 
-function showArray(){
+function showArray() {
     let text = tags.toString();
-    $('#showTagId').val(text);
+    showTagId.value = text;
     console.log(text);
 }
 
-function showArrayCreate(){
-    let text = $('#showTagId').val();
-
-    if (!text){
+function showArrayCreate() {
+    let text = showTagId.value;
+    if (!text) {
         console.log(tags);
-    }else {
+    } else {
         tags = text.split(",");
         console.log(tags);
     }
-
 }

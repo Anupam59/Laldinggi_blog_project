@@ -172,6 +172,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- tag_script App -->
 <script src="{{asset('Admin/dist/js/tag_script.js')}}"></script>
+<script src="{{asset('Admin/dist/js/tag_script2.js')}}"></script>
 
 <script>
     $('form').bind("keypress", function(e) {

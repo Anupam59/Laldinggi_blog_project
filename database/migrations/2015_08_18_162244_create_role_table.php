@@ -14,15 +14,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name',50);
-            $table->string('email',50)->unique();
-            $table->string('number',20)->unique();
-            $table->string('username',20)->unique();
-            $table->string('password');
+        Schema::create('role', function (Blueprint $table) {
+            $table->increments('role_id');
+            $table->string('role_title',100)->unique();
+            $table->string('role_title_bn',100)->unique();
 
-            $table->tinyInteger('role_id')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->integer('creator');
             $table->integer('modifier');
@@ -38,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('role');
     }
 };

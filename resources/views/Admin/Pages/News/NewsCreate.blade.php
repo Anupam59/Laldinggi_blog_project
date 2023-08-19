@@ -233,22 +233,125 @@
                                 </div>
 
 
-                                <div class="col-md-6">
+                                <div class="col-md-2">
                                     <div class="form-group">
                                         <label>Image</label>
-                                        <input type="file" class="form-control" name="site_about_img">
+                                        <input type="file" class="form-control" name="news_image">
                                     </div>
                                 </div>
 
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        @if($SiteCommon->site_about_img)
-                                            <img class="img-fluid w-100" src="{{asset($SiteCommon->site_about_img)}}" alt="Photo">
-                                        @else
-                                            <img class="img-fluid w-100" src="{{asset('Admin/dist/img/photo1.png')}}" alt="Photo">
-                                        @endif
+                                        <img class="img-fluid w-100" src="{{asset('Admin/dist/img/photo1.png')}}" alt="Photo">
                                     </div>
                                 </div>
+
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label>News Image Caption</label>
+                                        <input type="text" class="form-control" name="news_image_caption" placeholder="News Image Caption ...">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>News Videos</label>
+                                        <input type="text" class="form-control" name="news_vidos" placeholder="News Videos ...">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>News Videos Caption</label>
+                                        <input type="text" class="form-control" name="news_vidos_caption" placeholder="News Videos Caption ...">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>News Audio</label>
+                                        <input type="text" class="form-control" name="news_audio" placeholder="News Audio ...">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>News Audio Caption</label>
+                                        <input type="text" class="form-control" name="news_audio_caption" placeholder="News Audio Caption ...">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>News Source</label>
+                                        <input type="text" class="form-control" name="news_source" placeholder="News Audio ...">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>News Source Link</label>
+                                        <input type="text" class="form-control" name="news_source_link" placeholder="News Source Link ...">
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>News Reporter</label>
+                                        <select class="form-control select2" id="news_status_id" name="news_status_id">
+                                            <option value=" " selected="selected">Select One</option>
+                                            @if($NewsStatus)
+                                                @foreach($NewsStatus as $NewsStatusItem)
+                                                    <option value="{{ $NewsStatusItem->news_status_id }}"> {{ $NewsStatusItem->news_status_title }}</option>
+                                                @endforeach
+                                            @else
+
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <input id="showTagId" type="text" class="form-control d-none" value="{{ old('news_writer') }}" name="news_writer" placeholder="News Writer">
+                                <div class="col-md-6 tag_input">
+                                    <div class="wrapper">
+                                        <div class="title">
+                                            <label>News Writer</label>
+                                            <a id="removeBtn">All <i class="fa fa-trash"></i></a>
+                                        </div>
+                                        <div class="content">
+                                            <ul id="ulId">
+                                                <input id="inputId" type="text" spellcheck="false">
+                                            </ul>
+                                            <p><span id="detailsItem">10</span> Writer are remaining</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <input id="showTagId2" type="text" class="form-control d-none" value="{{ old('news_tag_keyword') }}" name="news_tag_keyword" placeholder="News Tag">
+                                <div class="col-md-12 tag_input">
+                                    <div class="wrapper">
+                                        <div class="title">
+                                            <label>News Tag Keyword</label>
+                                            <a id="removeBtn2">All <i class="fa fa-trash"></i></a>
+                                        </div>
+                                        <div class="content">
+                                            <ul id="ulId2">
+                                                <input id="inputId2" type="text" spellcheck="false">
+                                            </ul>
+                                            <p><span id="detailsItem2">10</span> Reporters are remaining</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
 
                                 <div class="col-md-12 text-center">
                                     <button type="submit" class="btn btn-primary">Update</button>

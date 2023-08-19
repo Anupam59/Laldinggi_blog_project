@@ -106,5 +106,4 @@ class SubCategoryController extends Controller
 
     }
 
-
 }
