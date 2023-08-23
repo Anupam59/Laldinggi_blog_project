@@ -13,9 +13,11 @@ class UserController extends Controller
     public function UserIndex(){
         $User = User::join('users as creator_by', 'creator_by.id', '=', 'users.creator')
             ->leftJoin('users as modifier_by', 'modifier_by.id', '=', 'users.modifier')
+            ->leftJoin('role', 'role.role_id', '=', 'users.role_id')
             ->select(
                 'creator_by.name as creator_by',
                 'modifier_by.name as modifier_by',
+                'role.role_title',
                 'users.*'
             )
             ->orderBy('id','asc')->paginate(10);
@@ -58,10 +60,40 @@ class UserController extends Controller
         }
     }
 
-
     public function UserEdit($id){
         $Role = RoleModel::where('status',1)->get();
         $User = User::where('id',$id)->first();
         return view('Admin/Pages/User/UserUpdate',compact('User','Role'));
     }
+
+    public function UserUpdate(Request $request, $id){
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users,email,'. $id .',id',
+            'number' => 'required|unique:users,number,'. $id .',id',
+            'username' => 'required|unique:users,username,'. $id .',id',
+            'role_id' => 'required',
+        ]);
+
+        $data =  array();
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['number'] = $request->number;
+        $data['username'] = $request->username;
+        $data['role_id'] = $request->role_id;
+        $data['status'] = $request->status;
+        $data['modifier'] = 1;
+        $data['modified_date'] = date("Y-m-d h:i:s");
+
+        $res = User::where('id','=',$id)->update($data);
+
+        if ($res){
+            return back()->with('success_message','User Update Successfully!');
+        }else{
+            return back()->with('error_message','User Update Fail!');
+        }
+
+    }
+
 }

@@ -28,8 +28,6 @@
 
 
 
-
-
         @if(!$User->isEmpty())
 
             <!-- Default box -->
@@ -57,11 +55,14 @@
                                 <th style="width: 1%">
                                     SL
                                 </th>
-                                <th style="width: 30%">
+                                <th style="width: 20%">
                                     Name
                                 </th>
                                 <th style="width: 30%">
                                     Contact
+                                </th>
+                                <th style="width: 20%">
+                                    Role
                                 </th>
                                 <th class="text-center">
                                     Status
@@ -91,6 +92,10 @@
                                         <small><b>Email :</b> {{ $UserItem->email }}</small>
                                     </td>
 
+
+                                    <td>
+                                        <a>{{ $UserItem->role_title }}</a>
+                                    </td>
 
 
                                     <td class="project-state">

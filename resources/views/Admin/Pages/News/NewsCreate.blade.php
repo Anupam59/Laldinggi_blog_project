@@ -301,10 +301,9 @@
 
 
                                 <div class="col-md-6">
-                                    <div class="form-group">
+                                    <div class="form-group select2multiple">
                                         <label>News Reporter</label>
-                                        <select class="form-control select2" id="news_status_id" name="news_status_id">
-                                            <option value=" " selected="selected">Select One</option>
+                                        <select class="form-control select2" multiple data-placeholder="Select Reporter" id="user_id" name="user_id[]">
                                             @if($NewsStatus)
                                                 @foreach($NewsStatus as $NewsStatusItem)
                                                     <option value="{{ $NewsStatusItem->news_status_id }}"> {{ $NewsStatusItem->news_status_title }}</option>
@@ -314,6 +313,7 @@
                                             @endif
                                         </select>
                                     </div>
+
                                 </div>
 
 
@@ -353,6 +353,38 @@
 
 
 
+
+                                <div class="card card-dark w-100">
+                                    <div class="card-header">
+                                        <h3 class="card-title">SEO Part</h3>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-body" style="display: block;">
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>SEO Title </label>
+                                                <input type="text" class="form-control" name="news_sco_title" placeholder="Head Title ...">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>SEO Description</label>
+                                                <textarea class="form-control" id="news_sco_description" name="news_sco_description" placeholder="News Details Brief..."></textarea>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
                                 <div class="col-md-12 text-center">
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
@@ -373,16 +405,16 @@
 @section('script')
     <script>
 
-        $('#cat_status').select2();
+        $('.select2').select2();
+        $('#user_id').select2({
+            multiple: true,
+        })
 
-        $('#SiteAboutDescId').summernote({
-            placeholder: 'Site About Description',
+        $('#news_details').summernote({
+            placeholder: 'News Description',
             height: 120,
         });
-        $('#SiteAboutDescBnId').summernote({
-            placeholder: 'Site About Description',
-            height: 120,
-        });
+
 
     </script>
 @endsection

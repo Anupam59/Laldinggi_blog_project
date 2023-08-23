@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
     <div class="content-wrapper" style="min-height: 1604.08px;" data-select2-id="31">
         <section class="content-header">
             <div class="container-fluid">

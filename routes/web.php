@@ -43,6 +43,7 @@ Route::get('user-list', [UserController::class, 'UserIndex']);
 Route::get('user-create', [UserController::class,'UserCreate']);
 Route::post('user-entry', [UserController::class, 'UserEntry']);
 Route::get('user-edit/{id}', [UserController::class, 'UserEdit']);
+Route::post('user-update/{id}', [UserController::class, 'UserUpdate']);
 
 
 Route::get('category-list', [CategoryController::class, 'CategoryIndex']);
