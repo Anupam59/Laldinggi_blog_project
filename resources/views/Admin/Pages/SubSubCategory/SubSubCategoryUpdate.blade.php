@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ url('/') }}/dashboard">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('/admin/') }}/dashboard">Dashboard</a></li>
                             <li class="breadcrumb-item active">SubSubCategory Update</li>
                         </ol>
                     </div>
@@ -31,7 +31,7 @@
 
                     <div class="card-header">
 
-                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/') }}/sub-sub-category-list">
+                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/admin/') }}/sub-sub-category-list">
                             All Data
                         </a>
 
@@ -74,7 +74,7 @@
 
 
 
-                        <form action="{{ url('/sub-sub-category-update/'.$SubSubCategory->sub_sub_cat_id)}}" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('admin/sub-sub-category-update/'.$SubSubCategory->sub_sub_cat_id)}}" method="post" enctype="multipart/form-data">
                             @csrf
 
                             <div class="row">

@@ -14,7 +14,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ url('/') }}/dashboard">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('/admin/') }}/dashboard">Dashboard</a></li>
                             <li class="breadcrumb-item active">About Us</li>
                         </ol>
                     </div>
@@ -73,7 +73,7 @@
 
 
 
-                        <form action="{{ url('about-update') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('admin/about-update') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
 

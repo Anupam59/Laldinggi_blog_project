@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ url('/') }}/dashboard">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('/admin/') }}/dashboard">Dashboard</a></li>
                             <li class="breadcrumb-item active">Menu Sub Sub Item Update</li>
                         </ol>
                     </div>
@@ -31,7 +31,7 @@
 
                     <div class="card-header">
 
-                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/') }}/menu-sub-sub-item-list">
+                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/admin/') }}/menu-sub-sub-item-list">
                             All Data
                         </a>
 

@@ -15,7 +15,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ url('/') }}/">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('/admin/') }}/">Dashboard</a></li>
                             <li class="breadcrumb-item active">News Status</li>
                         </ol>
                     </div>
@@ -36,7 +36,7 @@
                 <div class="card">
                     <div class="card-header">
 
-                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/') }}/news-status-create">
+                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/admin/') }}/news-status-create">
                             Add <i class="fas fa-plus"></i>
                         </a>
 
@@ -97,7 +97,7 @@
 
                                     <td class="project-actions text-right">
 
-                                        <a class="btn btn-primary btn-sm" href="{{ url('/') }}/news-status-edit/{{ $NewsStatusItem->news_status_id }}">
+                                        <a class="btn btn-primary btn-sm" href="{{ url('/admin/') }}/news-status-edit/{{ $NewsStatusItem->news_status_id }}">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
 

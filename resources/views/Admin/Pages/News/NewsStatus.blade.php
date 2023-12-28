@@ -1,3 +1,4 @@
+
 @extends('Admin.Layout.main')
 
 @section('content')
@@ -9,12 +10,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>News Status Update</h1>
+                        <h1>News Update</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('/admin/') }}/dashboard">Dashboard</a></li>
-                            <li class="breadcrumb-item active">News Status Update</li>
+                            <li class="breadcrumb-item active">News Update</li>
                         </ol>
                     </div>
                 </div>
@@ -28,13 +29,10 @@
             <div class="container-fluid">
 
                 <div class="card card-default">
-
                     <div class="card-header">
-
-                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/admin/') }}/news-status-list">
-                            All Data
+                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/admin/') }}/news-list">
+                            All News
                         </a>
-
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -43,14 +41,11 @@
                         </div>
                     </div>
 
-
-
                     <div class="card-body">
-
 
                         @if ($errors->any())
                             <div class="alert error_success">
-                                <ul>
+                                <ul class="m-0">
                                     @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>
                                     @endforeach
@@ -72,25 +67,41 @@
                         @endif
 
 
-                        <form action="{{ url('admin/news-status-update/'.$NewsStatus->news_status_id)}}" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('admin/news-status/'.$News->news_id)}}" method="post" enctype="multipart/form-data">
                             @csrf
-
                             <div class="row">
 
-                                <div class="col-md-7">
+
+                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Title</label>
-                                        <input type="text" class="form-control" name="news_status_title" value="{{ $NewsStatus->news_status_title }}" placeholder="Title" required>
+                                        <h2>{{ $News->news_head_title }}</h2>
                                     </div>
                                 </div>
 
-                                <div class="col-md-5">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>News Status</label>
+                                        <select class="form-control select2" id="news_status_id" name="news_status_id">
+                                            <option value=" " selected="selected">Select One</option>
+                                            @if($NewsStatus)
+                                                @foreach($NewsStatus as $NewsStatusItem)
+                                                    <option value="{{ $NewsStatusItem->news_status_id }}" @if($NewsStatusItem->news_status_id == $News->news_status_id) {{ 'selected' }} @endif > {{ $NewsStatusItem->news_status_title }}</option>
+                                                @endforeach
+                                            @else
+
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Status</label>
-                                        <select class="form-control" id="cat_status" name="status">
+                                        <select class="form-control" id="news_series_status" name="status">
                                             <option value="" selected="selected">Select One</option>
-                                            <option value="1" @if($NewsStatus->status == "1") {{ 'selected' }} @endif>Active</option>
-                                            <option value="2" @if($NewsStatus->status == "2") {{ 'selected' }} @endif>Inactive</option>
+                                            <option value="1" @if($News->status == "1") {{ 'selected' }} @endif>Active</option>
+                                            <option value="2" @if($News->status == "2") {{ 'selected' }} @endif>Inactive</option>
                                         </select>
                                     </div>
                                 </div>
@@ -115,7 +126,6 @@
 
 @section('script')
     <script>
-        $('#cat_status').select2();
+        $('.select2').select2();
     </script>
-
 @endsection

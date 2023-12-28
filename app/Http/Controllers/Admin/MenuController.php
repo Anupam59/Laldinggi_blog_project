@@ -350,30 +350,4 @@ class MenuController extends Controller
 
     }
 
-
-
-    public function MenuItemGetData(Request $request){
-        $menu_id = $request->input('menu_id');
-        $result = MenuItemModel::where('menu_id','=',$menu_id)->where('status',1)->select('menu_item_id','menu_item_title')->get();
-        $data = array();
-        $data[] = "<option value='' selected>Select One</option>";
-        foreach ($result as $row){
-            $data[] = "<option value='".$row->menu_item_id."'>".$row->menu_item_title."</option>";
-        }
-        return $data;
-    }
-
-
-    public function MenuSubItemGetData(Request $request){
-        $menu_item_id = $request->input('menu_item_id');
-        $result = MenuSubItemModel::where('menu_item_id','=',$menu_item_id)->where('status',1)->select('menu_sub_item_id','menu_sub_item_title')->get();
-        $data = array();
-        $data[] = "<option value='' selected>Select One</option>";
-        foreach ($result as $row){
-            $data[] = "<option value='".$row->menu_sub_item_id."'>".$row->menu_sub_item_title."</option>";
-        }
-        return $data;
-    }
-
-
 }

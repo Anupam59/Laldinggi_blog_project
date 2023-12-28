@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ url('/') }}/dashboard">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('/admin/') }}/dashboard">Dashboard</a></li>
                             <li class="breadcrumb-item active">News Page Create</li>
                         </ol>
                     </div>
@@ -30,7 +30,7 @@
                 <div class="card card-default">
 
                     <div class="card-header">
-                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/') }}/news-page-list">
+                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/admin/') }}/news-page-list">
                             All Data
                         </a>
 
@@ -43,8 +43,6 @@
 
                     <div class="card-body">
 
-
-
                         @if ($errors->any())
                             <div class="alert error_success">
                                 <ul class="m-0">
@@ -54,7 +52,6 @@
                                 </ul>
                             </div>
                         @endif
-
 
                         @if (session('success_message'))
                             <div class="alert alert_success">
@@ -68,11 +65,7 @@
 
                         @endif
 
-
-
-
-
-                        <form action="{{ url('news-page-entry') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('admin/news-page-entry') }}" method="post" enctype="multipart/form-data">
                             @csrf
 
                             <div class="row">
@@ -152,6 +145,7 @@
                     </div>
 
                 </div>
+
             </div>
         </section>
     </div>

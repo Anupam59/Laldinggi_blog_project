@@ -11,12 +11,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>User</h1>
+                        <h1>News Series</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('/admin/') }}/">Dashboard</a></li>
-                            <li class="breadcrumb-item active">User</li>
+                            <li class="breadcrumb-item active">News Series</li>
                         </ol>
                     </div>
                 </div>
@@ -28,13 +28,15 @@
 
 
 
-        @if(!$User->isEmpty())
+
+
+        @if(!$NewsSeries->isEmpty())
 
             <!-- Default box -->
                 <div class="card">
                     <div class="card-header">
 
-                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/admin/') }}/user-create">
+                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/admin/') }}/news-series-create">
                             Add <i class="fas fa-plus"></i>
                         </a>
 
@@ -55,14 +57,11 @@
                                 <th style="width: 1%">
                                     SL
                                 </th>
-                                <th style="width: 20%">
+                                <th style="width: 30%">
                                     Name
                                 </th>
                                 <th style="width: 30%">
-                                    Contact
-                                </th>
-                                <th style="width: 20%">
-                                    Role
+                                    Title
                                 </th>
                                 <th class="text-center">
                                     Status
@@ -74,34 +73,33 @@
                             </thead>
                             <tbody>
 
-                            @foreach($User as $key=>$UserItem)
+                            @foreach($NewsSeries as $key=>$NewsSeriesItem)
 
                                 <tr>
                                     <td>{{ $key+1 }}</td>
 
                                     <td>
-                                        <a>{{ $UserItem->name }}</a>
+                                        <a>{{ $NewsSeriesItem->news_series_en_name }}</a>
                                         <br>
-                                        <small>{{ $UserItem->username }}</small>
+                                        <small>{{ $NewsSeriesItem->news_series_bn_name }}</small>
                                     </td>
+
 
 
                                     <td>
-                                        <small><b>Number :</b> {{ $UserItem->number }}</small>
+                                        <a>{{ $NewsSeriesItem->news_series_title }}</a>
                                         <br>
-                                        <small><b>Email :</b> {{ $UserItem->email }}</small>
+                                        <small><b>slug :</b> {{ $NewsSeriesItem->news_series_slug }}</small>
                                     </td>
 
 
-                                    <td>
-                                        <a>{{ $UserItem->role_title }}</a>
-                                    </td>
+
 
 
                                     <td class="project-state">
-                                        @if($UserItem->status == 1)
+                                        @if($NewsSeriesItem->status == 1)
                                             <span class="badge badge-success">Active</span>
-                                        @elseif($UserItem->status == 2)
+                                        @elseif($NewsSeriesItem->status == 2)
                                             <span class="badge badge-danger">Inactive</span>
                                         @endif
                                     </td>
@@ -109,7 +107,7 @@
 
                                     <td class="project-actions text-right">
 
-                                        <a class="btn btn-primary btn-sm" href="{{ url('/admin/') }}/user-edit/{{ $UserItem->id }}">
+                                        <a class="btn btn-primary btn-sm" href="{{ url('/admin/') }}/news-series-edit/{{ $NewsSeriesItem->news_series_id }}">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
 
@@ -118,6 +116,7 @@
                                         </a>
 
                                     </td>
+
 
 
                                 </tr>
@@ -133,7 +132,7 @@
 
                 <div class="row">
                     <div class="col d-flex align-items-center justify-content-center">
-                        {{ $User->onEachSide(3)->links('Admin.Common.Paginate') }}
+                        {{ $NewsSeries->onEachSide(3)->links('Admin.Common.Paginate') }}
                     </div>
                 </div>
 

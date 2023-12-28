@@ -63,7 +63,6 @@ class SiteCommonController extends Controller
 
     }
 
-
     public function CommunicationEdit(){
         $id = 1;
         $SiteCommon = SiteCommonModel::where('site_common_id',$id)
@@ -77,8 +76,6 @@ class SiteCommonController extends Controller
             )->first();
         return view('Admin/Pages/SiteCommon/Communication',compact('SiteCommon'));
     }
-
-
 
     public function CommunicationUpdate(Request $request){
         $id = 1;
@@ -103,8 +100,6 @@ class SiteCommonController extends Controller
 
     }
 
-
-
     public function PolicyEdit(){
         $id = 1;
         $SiteCommon = SiteCommonModel::where('site_common_id',$id)
@@ -114,8 +109,6 @@ class SiteCommonController extends Controller
             )->first();
         return view('Admin/Pages/SiteCommon/Policy',compact('SiteCommon'));
     }
-
-
 
     public function PolicyUpdate(Request $request){
         $id = 1;
@@ -136,7 +129,6 @@ class SiteCommonController extends Controller
 
     }
 
-
     public function TermsEdit(){
         $id = 1;
         $SiteCommon = SiteCommonModel::where('site_common_id',$id)
@@ -146,8 +138,6 @@ class SiteCommonController extends Controller
             )->first();
         return view('Admin/Pages/SiteCommon/Terms',compact('SiteCommon'));
     }
-
-
 
     public function TermsUpdate(Request $request){
         $id = 1;
@@ -167,8 +157,6 @@ class SiteCommonController extends Controller
         }
 
     }
-
-
 
     public function InfoEdit(){
         $id = 1;
@@ -195,8 +183,6 @@ class SiteCommonController extends Controller
             )->first();
         return view('Admin/Pages/SiteCommon/Info',compact('SiteCommon'));
     }
-
-
 
     public function InfoUpdate(Request $request){
         $id = 1;
@@ -311,6 +297,5 @@ class SiteCommonController extends Controller
         }
 
     }
-
 
 }

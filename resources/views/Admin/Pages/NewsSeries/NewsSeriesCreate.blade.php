@@ -9,12 +9,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>User Create</h1>
+                        <h1>News Series Create</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('/admin/') }}/dashboard">Dashboard</a></li>
-                            <li class="breadcrumb-item active">User Create</li>
+                            <li class="breadcrumb-item active">News Series Create</li>
                         </ol>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                 <div class="card card-default">
 
                     <div class="card-header">
-                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/admin/') }}/user-list">
+                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/admin/') }}/news-series-list">
                             All Data
                         </a>
 
@@ -72,76 +72,74 @@
 
 
 
-                        <form action="{{ url('admin/user-entry') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('admin/news-series-entry') }}" method="post" enctype="multipart/form-data">
                             @csrf
 
                             <div class="row">
 
-                                <div class="col-md-4">
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label>Title</label>
+                                        <input type="text" class="form-control" value="{{ old('news_series_title') }}" name="news_series_title" placeholder="Title">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Name</label>
-                                        <input type="text" class="form-control" value="{{ old('name') }}" name="name" placeholder="Name" required>
+                                        <input type="text" class="form-control" value="{{ old('news_series_en_name') }}" name="news_series_en_name" placeholder="Name">
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Username</label>
-                                        <input type="text" class="form-control" value="{{ old('username') }}" name="username" placeholder="Username" required>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Role</label>
-                                        <select class="form-control select2" id="role_id" name="role_id" required>
-                                            <option value=" " selected="selected">Select One</option>
-                                            @if(!$Role->isEmpty())
-                                                @foreach($Role as $RoleItem)
-                                                    <option value="{{ $RoleItem->role_id }}"> {{ $RoleItem->role_title }}</option>
-                                                @endforeach
-                                            @else
-
-                                            @endif
-                                        </select>
-                                    </div>
-                                </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="text" class="form-control" value="{{ old('email') }}" name="email" placeholder="Email" required>
+                                        <label>Name (বাংলা)</label>
+                                        <input type="text" class="form-control" value="{{ old('news_series_bn_name') }}" name="news_series_bn_name" placeholder="Name (বাংলা)">
                                     </div>
                                 </div>
+
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Number</label>
-                                        <input type="text" class="form-control" value="{{ old('number') }}" name="number" placeholder="Number" required>
+                                        <label>Description</label>
+                                        <input type="text" class="form-control" value="{{ old('news_series_en_desc') }}" name="news_series_en_desc" placeholder="Description">
                                     </div>
                                 </div>
+
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" id="passInput" class="form-control" value="{{ old('password') }}" name="password" placeholder="Password" required>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input type="checkbox" id="showPass" class="form-check-input">
-                                        <label class="form-check-label" for="exampleCheck1">Show Password</label>
-                                    </div>
-
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Confirm Password</label>
-                                        <input type="password" id="passInput" class="form-control" value="{{ old('confirm_password') }}" name="confirm_password" placeholder="Confirm Password" required>
+                                        <label>Description (বাংলা)</label>
+                                        <input type="text" class="form-control" value="{{ old('news_series_bn_desc') }}" name="news_series_bn_desc" placeholder="Description (বাংলা)">
                                     </div>
                                 </div>
 
 
+                                <input id="showTagId" type="text" class="form-control d-none" value="{{ old('news_series_en_key') }}" name="news_series_en_key" placeholder="NewsSeries Tag">
+
+
+                                <div class="col-md-12 tag_input">
+                                    <div class="wrapper">
+
+                                        <div class="title">
+                                            <label>Tag</label>
+                                            <a id="removeBtn">All <i class="fa fa-trash"></i></a>
+                                        </div>
+
+                                        <div class="content">
+
+                                            <ul id="ulId">
+                                                <input id="inputId" type="text" spellcheck="false">
+                                            </ul>
+                                            <p><span id="detailsItem">10</span> tags are remaining</p>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
 
                                 <div class="col-md-12 text-center">
                                     <button type="submit" class="btn btn-primary">Create</button>
@@ -163,17 +161,7 @@
 @section('script')
     <script>
 
-        $('#role_id').select2();
-
-        $('#showPass').on('click', function(){
-            var passInput=$("#passInput");
-            if(passInput.attr('type')==='password')
-            {
-                passInput.attr('type','text');
-            }else{
-                passInput.attr('type','password');
-            }
-        })
+        $('#news_series_status').select2();
 
     </script>
 @endsection

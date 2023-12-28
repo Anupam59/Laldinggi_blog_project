@@ -48,6 +48,7 @@ return new class extends Migration
 
             $table->tinyInteger('news_page_id')->nullable();
             $table->tinyInteger('news_type_id')->nullable();
+            $table->integer('news_series_id')->nullable();
 
             $table->tinyInteger('news_status_id')->nullable();
             $table->tinyInteger('status')->default(1);

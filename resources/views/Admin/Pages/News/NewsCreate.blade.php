@@ -3,8 +3,6 @@
 
 @section('content')
 
-
-
     <div class="content-wrapper" style="min-height: 1604.08px;" data-select2-id="31">
         <section class="content-header">
             <div class="container-fluid">
@@ -14,7 +12,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ url('/') }}/dashboard">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('/admin/') }}/dashboard">Dashboard</a></li>
                             <li class="breadcrumb-item active">News Create</li>
                         </ol>
                     </div>
@@ -29,10 +27,9 @@
             <div class="container-fluid">
 
                 <div class="card card-default">
-
                     <div class="card-header">
-                        <a class="btn btn-danger btn-sm add_btn" href="#">
-                            News Create Page
+                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/admin/') }}/news-list">
+                            All News
                         </a>
 
                         <div class="card-tools">
@@ -43,8 +40,6 @@
                     </div>
 
                     <div class="card-body">
-
-
 
                         @if ($errors->any())
                             <div class="alert error_success">
@@ -70,8 +65,7 @@
                         @endif
 
 
-
-                        <form action="{{ url('about-update') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('admin/news-entry') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
 
@@ -80,7 +74,7 @@
                                     <div class="form-group">
                                         <label>Category <span class="text-danger">*</span></label>
                                         <select class="form-control select2" id="cat_id" name="cat_id" required>
-                                            <option value=" " selected="selected">Select One</option>
+                                            <option value="" selected="selected">Select One</option>
                                             @if(!$Category->isEmpty())
                                                 @foreach($Category as $CategoryItem)
                                                     <option value="{{ $CategoryItem->cat_id }}"> {{ $CategoryItem->cat_title }}</option>
@@ -111,8 +105,6 @@
                                 </div>
 
 
-
-
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Division</label>
@@ -120,7 +112,7 @@
                                             <option value=" " selected="selected">Select One</option>
                                             @if($Division)
                                                 @foreach($Division as $DivisionItem)
-                                                    <option value="{{ $DivisionItem->division_id }}"> {{ $DivisionItem->cat_title }}</option>
+                                                    <option value="{{ $DivisionItem->division_id }}"> {{ $DivisionItem->division_name }}</option>
                                                 @endforeach
                                             @else
 
@@ -148,9 +140,7 @@
                                 </div>
 
 
-
-
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label>News Page</label>
                                         <select class="form-control select2" id="news_page_id" name="news_page_id">
@@ -166,7 +156,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label>News Type</label>
                                         <select class="form-control select2" id="news_type_id" name="news_type_id">
@@ -182,7 +172,25 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>News Series</label>
+                                        <select class="form-control select2" id="news_series_id" name="news_series_id">
+                                            <option value=" " selected="selected">Select One</option>
+                                            @if($NewsSeries)
+                                                @foreach($NewsSeries as $NewsSeriesItem)
+                                                    <option value="{{ $NewsSeriesItem->news_series_id }}"> {{ $NewsSeriesItem->news_series_title }}</option>
+                                                @endforeach
+                                            @else
+
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label>News Status</label>
                                         <select class="form-control select2" id="news_status_id" name="news_status_id">
@@ -197,9 +205,6 @@
                                         </select>
                                     </div>
                                 </div>
-
-
-
 
 
 
@@ -233,14 +238,14 @@
                                 </div>
 
 
-                                <div class="col-md-2">
+                                <div class="col-md-5">
                                     <div class="form-group">
                                         <label>Image</label>
                                         <input type="file" class="form-control" name="news_image">
                                     </div>
                                 </div>
 
-                                <div class="col-md-3">
+                                <div class="col-md-3 d-none">
                                     <div class="form-group">
                                         <img class="img-fluid w-100" src="{{asset('Admin/dist/img/photo1.png')}}" alt="Photo">
                                     </div>
@@ -298,15 +303,13 @@
                                 </div>
 
 
-
-
                                 <div class="col-md-6">
                                     <div class="form-group select2multiple">
                                         <label>News Reporter</label>
-                                        <select class="form-control select2" multiple data-placeholder="Select Reporter" id="user_id" name="user_id[]">
-                                            @if($NewsStatus)
-                                                @foreach($NewsStatus as $NewsStatusItem)
-                                                    <option value="{{ $NewsStatusItem->news_status_id }}"> {{ $NewsStatusItem->news_status_title }}</option>
+                                        <select class="form-control select2" multiple data-placeholder="Select Reporter" id="user_id" name="news_reporter[]">
+                                            @if($User)
+                                                @foreach($User as $UserItem)
+                                                    <option value="{{ $UserItem->id }}"> {{ $UserItem->name }}</option>
                                                 @endforeach
                                             @else
 
@@ -369,14 +372,14 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>SEO Title </label>
-                                                <input type="text" class="form-control" name="news_sco_title" placeholder="Head Title ...">
+                                                <input type="text" class="form-control" name="news_seo_title" placeholder="Head Title ...">
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>SEO Description</label>
-                                                <textarea class="form-control" id="news_sco_description" name="news_sco_description" placeholder="News Details Brief..."></textarea>
+                                                <textarea class="form-control" id="news_seo_description" name="news_seo_description" placeholder="News Details Brief..."></textarea>
                                             </div>
                                         </div>
 
@@ -386,7 +389,7 @@
 
 
                                 <div class="col-md-12 text-center">
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn btn-primary">Create</button>
                                 </div>
 
                             </div>
@@ -409,10 +412,45 @@
         $('#user_id').select2({
             multiple: true,
         })
-
         $('#news_details').summernote({
             placeholder: 'News Description',
             height: 120,
+        });
+
+        $('#cat_id').on('change',function (e){
+            var cat_id = e.target.value;
+            axios.post('/SubCategoryGetData',{cat_id:cat_id}).then(function (response) {
+                var JsonData = response.data;
+                $('#sub_cat_id').empty();
+                $('#sub_cat_id').append( JsonData );
+            });
+        });
+
+        $('#sub_cat_id').on('change',function (e){
+            var sub_cat_id = e.target.value;
+            axios.post('/SubSubCategoryGetData',{sub_cat_id:sub_cat_id}).then(function (response) {
+                var JsonData = response.data;
+                $('#sub_sub_cat_id').empty();
+                $('#sub_sub_cat_id').append( JsonData );
+            });
+        });
+
+        $('#division_id').on('change',function (e){
+            var division_id = e.target.value;
+            axios.post('/DistrictGetData',{division_id:division_id}).then(function (response) {
+                var JsonData = response.data;
+                $('#district_id').empty();
+                $('#district_id').append( JsonData );
+            });
+        });
+
+        $('#district_id').on('change',function (e){
+            var district_id = e.target.value;
+            axios.post('/UpazilaGetData',{district_id:district_id}).then(function (response) {
+                var JsonData = response.data;
+                $('#upazila_id').empty();
+                $('#upazila_id').append( JsonData );
+            });
         });
 
 

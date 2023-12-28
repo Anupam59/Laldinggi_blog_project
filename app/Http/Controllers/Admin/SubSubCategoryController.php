@@ -118,19 +118,4 @@ class SubSubCategoryController extends Controller
 
 
 
-    public function SubCategoryGetData(Request $request){
-        $cat_id = $request->input('cat_id');
-        $result = SubCategoryModel::where('cat_id','=',$cat_id)->where('status',1)->select('sub_cat_id','sub_cat_title')->get();
-        $data = array();
-        $data[] = "<option value='' selected>Select One</option>";
-        foreach ($result as $row){
-            $data[] = "<option value='".$row->sub_cat_id."'>".$row->sub_cat_title."</option>";
-        }
-        return $data;
-    }
-
-
-
-
-
 }

@@ -15,7 +15,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ url('/') }}/">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('/admin/') }}/">Dashboard</a></li>
                             <li class="breadcrumb-item active">Menu Sub Sub Item</li>
                         </ol>
                     </div>
@@ -36,7 +36,7 @@
                 <div class="card">
                     <div class="card-header">
 
-                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/') }}/menu-sub-sub-item-create">
+                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/admin/') }}/menu-sub-sub-item-create">
                             Add <i class="fas fa-plus"></i>
                         </a>
 
@@ -112,7 +112,7 @@
 
                                     <td class="project-actions text-right">
 
-                                        <a class="btn btn-primary btn-sm" href="{{ url('/') }}/menu-sub-sub-item-edit/{{ $MenuSubSubItemI->menu_sub_sub_item_id }}">
+                                        <a class="btn btn-primary btn-sm" href="{{ url('/admin/') }}/menu-sub-sub-item-edit/{{ $MenuSubSubItemI->menu_sub_sub_item_id }}">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
 

@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('news_sco', function (Blueprint $table) {
-            $table->bigIncrements('news_sco_id');
+        Schema::create('news_seo', function (Blueprint $table) {
+            $table->bigIncrements('news_seo_id');
             $table->bigInteger('news_id');
-            $table->string('news_sco_title',300)->nullable();
-            $table->string('news_sco_description',400)->nullable();
-            $table->string('news_sco_keyword',300)->nullable();
+            $table->string('news_seo_title',300)->nullable();
+            $table->string('news_seo_description',400)->nullable();
         });
     }
 
