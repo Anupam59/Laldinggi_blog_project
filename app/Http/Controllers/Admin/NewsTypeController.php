@@ -17,7 +17,7 @@ class NewsTypeController extends Controller
                 'modifier_by.name as modifier_by',
                 'news_type.*'
             )
-            ->orderBy('news_type_id','asc')->paginate(1);
+            ->orderBy('news_type_id','asc')->paginate(10);
         return view('Admin/Pages/NewsType/NewsTypeIndex',compact('NewsType'));
     }
 

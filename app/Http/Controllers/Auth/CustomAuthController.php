@@ -46,15 +46,12 @@ class CustomAuthController extends Controller
             'email' =>  'required',
             'password'  =>  'required'
         ]);
-
         $credentials = $request->only('email', 'password');
-
         if(Auth::attempt($credentials))
         {
-            return redirect('dashboard');
+            return redirect('admin/dashboard');
         }
-
-        return redirect('login')->with('success', 'Login details are not valid');
+        return redirect('admin/login')->with('success', 'Login details are not valid');
     }
 
     function dashboard()
@@ -73,6 +70,6 @@ class CustomAuthController extends Controller
 
         Auth::logout();
 
-        return Redirect('login');
+        return Redirect('admin/login');
     }
 }

@@ -18,7 +18,7 @@ class IsLoggedIn
     public function handle(Request $request, Closure $next)
     {
         if (!Auth::check()){
-            return redirect('login')->with('fail','You have to Login First !');
+            return redirect('admin/login')->with('fail','You have to Login First !');
         }
         return $next($request);
     }

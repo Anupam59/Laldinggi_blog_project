@@ -23,7 +23,7 @@ class SubSubCategoryController extends Controller
                 'sub_category.sub_cat_title',
                 'sub_sub_category.*'
             )
-            ->orderBy('sub_sub_cat_id','asc')->paginate(10);
+            ->orderBy('sub_sub_cat_id','asc')->paginate(20);
 
         return view('Admin/Pages/SubSubCategory/SubSubCategoryIndex',compact('SubSubCategory'));
     }

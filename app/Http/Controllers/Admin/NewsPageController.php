@@ -17,7 +17,7 @@ class NewsPageController extends Controller
                 'modifier_by.name as modifier_by',
                 'news_page.*'
             )
-            ->orderBy('news_page_id','asc')->paginate(1);
+            ->orderBy('news_page_id','asc')->paginate(10);
         return view('Admin/Pages/NewsPage/NewsPageIndex',compact('NewsPage'));
     }
 

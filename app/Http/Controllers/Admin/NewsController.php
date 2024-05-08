@@ -104,6 +104,7 @@ class NewsController extends Controller
 
 
     public function NewsEntry(Request $request){
+
         $validation = $request->validate([
             'news_head_title' => 'required',
             'cat_id' => 'required',
@@ -167,7 +168,7 @@ class NewsController extends Controller
                 $data1['news_id'] = $res;
                 $data1['news_seo_title'] = $news_seo_title;
                 $data1['news_seo_description'] = $news_seo_description;
-                $res1 = NewsSeoModel::insert($data1);
+                NewsSeoModel::insert($data1);
             }
 
             $news_tag_keyword = $request->news_tag_keyword;
@@ -175,7 +176,7 @@ class NewsController extends Controller
                 $data2 =  array();
                 $data2['news_id'] = $res;
                 $data2['news_tag_keyword'] = $news_tag_keyword;
-                $res2 = NewsTagModel::insert($data2);
+                NewsTagModel::insert($data2);
             }
         }
 
@@ -246,6 +247,10 @@ class NewsController extends Controller
 
 
     public function NewsUpdate(Request $request, $id){
+
+//        $NewsTag = NewsTagModel::where('news_id',$id)->first();
+//        dd($NewsTag);
+
 
         $request->validate([
             'news_head_title' => 'required',
@@ -318,14 +323,22 @@ class NewsController extends Controller
             $data1 =  array();
             $data1['news_seo_title'] = $news_seo_title;
             $data1['news_seo_description'] = $news_seo_description;
-            $res1 = NewsSeoModel::where('news_id','=',$id)->update($data1);
+            NewsSeoModel::where('news_id','=',$id)->update($data1);
         }
 
         $news_tag_keyword = $request->news_tag_keyword;
         if($news_tag_keyword){
             $data2 =  array();
             $data2['news_tag_keyword'] = $news_tag_keyword;
-            $res2 = NewsTagModel::where('news_id','=',$id)->update($data2);
+            $NewsTag = NewsTagModel::where('news_id',$id)->first();
+            if($NewsTag){
+                NewsTagModel::where('news_id','=',$id)->update($data2);
+            }
+            if($NewsTag==null){
+                $data2['news_id'] = $id;
+                NewsTagModel::insert($data2);
+            }
+
         }
 
         if ($res){

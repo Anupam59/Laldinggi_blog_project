@@ -17,7 +17,8 @@ class CategoryController extends Controller
                 'modifier_by.name as modifier_by',
                 'category.*'
             )
-            ->orderBy('cat_id','asc')->paginate(1);
+            ->orderBy('cat_id','asc')->paginate(20);
+
         return view('Admin/Pages/Category/CategoryIndex',compact('Category'));
     }
 

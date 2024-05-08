@@ -213,14 +213,14 @@
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item">
-                            <a href="{{ url('/admin/') }}/dashboard" class="nav-link">
+                            <a href="{{ url('/admin/') }}/news-list" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>News List</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ url('/admin/') }}/dashboard" class="nav-link">
+                            <a href="{{ url('/admin/') }}/news-create" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>News Create</p>
                             </a>

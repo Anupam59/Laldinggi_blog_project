@@ -72,9 +72,9 @@
                             <div class="row">
 
 
-                                <div class="col-md-12">
+                                <div class="col-12">
                                     <div class="form-group">
-                                        <h2>{{ $News->news_head_title }}</h2>
+                                        <h6>{{ $News->news_head_title }}</h6>
                                     </div>
                                 </div>
 

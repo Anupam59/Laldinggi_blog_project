@@ -135,6 +135,23 @@
 
 
             @else
+                <div class="card">
+                    <div class="card-header">
+
+                        <a class="btn btn-danger btn-sm add_btn" href="{{ url('/admin/') }}/news-type-create">
+                            Add <i class="fas fa-plus"></i>
+                        </a>
+
+                        <div class="card-tools">
+
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+                </div>
                 @include('Admin.Common.DataNotFound')
             @endif
 

@@ -19,7 +19,7 @@ class SubCategoryController extends Controller
                 'modifier_by.name as modifier_by',
                 'sub_category.*'
             )
-            ->orderBy('sub_cat_id','asc')->paginate(1);
+            ->orderBy('sub_cat_id','asc')->paginate(20);
         return view('Admin/Pages/SubCategory/SubCategoryIndex',compact('SubCategory'));
     }
 
