@@ -102,7 +102,6 @@ class NewsController extends Controller
         return view('Admin/Pages/News/NewsCreate',compact('Category','Division','NewsPage','NewsType','NewsSeries','NewsStatus','User'));
     }
 
-
     public function NewsEntry(Request $request){
 
         $validation = $request->validate([
@@ -120,7 +119,7 @@ class NewsController extends Controller
         if ($news_image){
             $ImageName =time().".".$news_image->getClientOriginalExtension();
             $Path = "Images/news-img/";
-            $ResizeImage = Image::make($news_image)->resize(1400,700);
+            $ResizeImage = Image::make($news_image)->resize(640,427);
             $url = $Path.$ImageName;
             $url_database = "/".$Path.$ImageName;
             $ResizeImage ->save($url);
@@ -191,7 +190,6 @@ class NewsController extends Controller
 
     }
 
-
     public function NewsEdit($id){
         $Category = CategoryModel::where('status',1)->get();
         $SubCategory = '';
@@ -230,7 +228,6 @@ class NewsController extends Controller
         return view('Admin/Pages/News/NewsUpdate',compact('News','NewsTag','NewsSeo','Category','SubCategory','SubSubCategory','Division','District','Upazila','NewsPage','NewsType','NewsSeries','NewsStatus','User'));
     }
 
-
     public function NewsStatus($id){
         $NewsStatus = NewsStatusModel::where('status',1)->get();
         $News = NewsModel::where('news_id',$id)->select(
@@ -242,9 +239,6 @@ class NewsController extends Controller
         )->first();
         return view('Admin/Pages/News/NewsStatus',compact('News','NewsStatus'));
     }
-
-
-
 
     public function NewsUpdate(Request $request, $id){
 
@@ -268,7 +262,7 @@ class NewsController extends Controller
         if ($news_image){
             $ImageName =time().'.'.$news_image->getClientOriginalExtension();
             $Path = "Images/news-img/";
-            $ResizeImage = Image::make($news_image)->resize(1400,700);
+            $ResizeImage = Image::make($news_image)->resize(640,427);
             $url = $Path.$ImageName;
             $url_database = "/".$Path.$ImageName;
             $ResizeImage ->save($url);

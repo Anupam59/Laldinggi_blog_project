@@ -1,0 +1,12 @@
+@media (min-width: 992px) {
+    .TrendingWidth {
+        width: 730px;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    .TrendingWidth {
+        width: 630px;
+    }
+}

@@ -89,7 +89,8 @@
                                 <td>
                                     <a>{{ $CategoryItem->cat_title }}</a>
                                     <br>
-                                    <small><b>slug :</b> {{ $CategoryItem->cat_slug }}</small>
+                                    <small><b>Slug :</b> {{ $CategoryItem->cat_slug }}</small>
+                                    <small><b>Id :</b> {{ $CategoryItem->cat_id }}</small>
                                 </td>
 
 

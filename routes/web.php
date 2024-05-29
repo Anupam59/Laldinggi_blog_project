@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\SubSubCategoryController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\CustomAuthController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('alreadyLoggedIn')->group(function (){
@@ -50,7 +51,6 @@ Route::middleware('isLoggedIn')->group(function (){
     Route::post('admin/category-update/{id}', [CategoryController::class, 'CategoryUpdate']);
 
 
-
     Route::get('admin/sub-category-list', [SubCategoryController::class, 'SubCategoryIndex']);
     Route::get('admin/sub-category-create', [SubCategoryController::class, 'SubCategoryCreate']);
     Route::post('admin/sub-category-entry', [SubCategoryController::class, 'SubCategoryEntry']);
@@ -65,8 +65,6 @@ Route::middleware('isLoggedIn')->group(function (){
     Route::post('admin/sub-sub-category-update/{id}', [SubSubCategoryController::class, 'SubSubCategoryUpdate']);
 
 
-
-
     Route::get('admin/about-edit', [SiteCommonController::class, 'AboutEdit']);
     Route::post('admin/about-update', [SiteCommonController::class, 'AboutUpdate']);
     Route::get('admin/communication-edit', [SiteCommonController::class, 'CommunicationEdit']);
@@ -79,7 +77,6 @@ Route::middleware('isLoggedIn')->group(function (){
     Route::post('admin/info-update', [SiteCommonController::class, 'InfoUpdate']);
 
 
-
     Route::get('admin/menu-list', [MenuController::class, 'MenuIndex']);
     Route::get('admin/menu-create', [MenuController::class, 'MenuCreate']);
     Route::post('admin/menu-entry', [MenuController::class, 'MenuEntry']);
@@ -87,13 +84,11 @@ Route::middleware('isLoggedIn')->group(function (){
     Route::post('admin/menu-update/{id}', [MenuController::class, 'MenuUpdate']);
 
 
-
     Route::get('admin/menu-item-list', [MenuController::class, 'MenuItemIndex']);
     Route::get('admin/menu-item-create', [MenuController::class, 'MenuItemCreate']);
     Route::post('admin/menu-item-entry', [MenuController::class, 'MenuItemEntry']);
     Route::get('admin/menu-item-edit/{id}', [MenuController::class, 'MenuItemEdit']);
     Route::post('admin/menu-item-update/{id}', [MenuController::class, 'MenuItemUpdate']);
-
 
 
     Route::get('admin/menu-sub-item-list', [MenuController::class, 'MenuSubItemIndex']);
@@ -110,7 +105,6 @@ Route::middleware('isLoggedIn')->group(function (){
     Route::post('admin/menu-sub-sub-item-update/{id}', [MenuController::class, 'MenuSubSubItemUpdate']);
 
 
-
     Route::get('admin/news-page-list', [NewsPageController::class, 'NewsPageIndex']);
     Route::get('admin/news-page-create', [NewsPageController::class, 'NewsPageCreate']);
     Route::post('admin/news-page-entry', [NewsPageController::class, 'NewsPageEntry']);
@@ -118,13 +112,11 @@ Route::middleware('isLoggedIn')->group(function (){
     Route::post('admin/news-page-update/{id}', [NewsPageController::class, 'NewsPageUpdate']);
 
 
-
     Route::get('admin/news-series-list', [NewsSeriesController::class, 'NewsSeriesIndex']);
     Route::get('admin/news-series-create', [NewsSeriesController::class, 'NewsSeriesCreate']);
     Route::post('admin/news-series-entry', [NewsSeriesController::class, 'NewsSeriesEntry']);
     Route::get('admin/news-series-edit/{id}', [NewsSeriesController::class, 'NewsSeriesEdit']);
     Route::post('admin/news-series-update/{id}', [NewsSeriesController::class, 'NewsSeriesUpdate']);
-
 
 
     Route::get('admin/news-type-list', [NewsTypeController::class, 'NewsTypeIndex']);
@@ -149,8 +141,6 @@ Route::middleware('isLoggedIn')->group(function (){
     Route::post('admin/news-update/{id}', [NewsController::class, 'NewsUpdate']);
 
 
-
-
     Route::post('SubCategoryGetData',[AxiosCallController::class,'SubCategoryGetData']);
     Route::post('SubSubCategoryGetData',[AxiosCallController::class,'SubSubCategoryGetData']);
     Route::post('MenuItemGetData',[AxiosCallController::class,'MenuItemGetData']);
@@ -159,5 +149,22 @@ Route::middleware('isLoggedIn')->group(function (){
     Route::post('UpazilaGetData',[AxiosCallController::class,'UpazilaGetData']);
 
 });
+
+
+
+
+
+
+
+//Site Route Start
+Route::get('/', [SiteController::class, 'HomePage']);
+
+Route::get('/{cat_slug}/{news_slug}', [SiteController::class, 'DetailsPage1']);
+Route::get('/{cat_slug}/{sub_cat_slug}/{news_slug}', [SiteController::class, 'DetailsPage2']);
+Route::get('/{cat_slug}/{sub_cat_slug}/{sub_sub_cat_slug}/{news_slug}', [SiteController::class, 'DetailsPage3']);
+
+Route::get('/category', [SiteController::class, 'CategoryPage']);
+Route::post('/getTabData', [SiteController::class,'getTabData']);
+Route::get('/MenuData/{menuId}', [SiteController::class,'MenuData']);
 
 

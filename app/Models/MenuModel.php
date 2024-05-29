@@ -13,4 +13,9 @@ class MenuModel extends Model
     public $incrementing =true;
     public $keyType ='int';
     public $timestamps =false;
+
+    public function menu_item(){
+        return $this->hasMany(MenuItemModel::class,'menu_id','menu_id');
+    }
+
 }

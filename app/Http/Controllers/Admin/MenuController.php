@@ -21,7 +21,7 @@ class MenuController extends Controller
                 'modifier_by.name as modifier_by',
                 'menu.*'
             )
-            ->orderBy('menu_id','asc')->paginate(1);
+            ->orderBy('menu_id','asc')->paginate(10);
         return view('Admin/Pages/Menu/MenuIndex',compact('Menu'));
     }
     public function MenuCreate(){
