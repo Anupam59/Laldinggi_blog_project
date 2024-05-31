@@ -21,7 +21,7 @@
 
                                     <div class="lifestyle-content">
                                         <div class="mt-auto">
-                                            <a href="#" class="h5 text-white link-hover">{{$NewsItem->news_head_title}}</a>
+                                            <a href="{{ url('/')."/".$NewsItem->cat_slug."/".$NewsItem->news_slug }}" class="h5 text-white link-hover">{{$NewsItem->news_head_title}}</a>
                                             <div class="d-flex justify-content-between mt-4">
                                                 <a href="#" class="small text-white link-hover">{{$NewsItem->cat_bn_name}}</a>
                                                 <small class="text-white d-block"><i class="fas fa-calendar-alt me-1"></i> {{bn_date(date("dM -Y", strtotime($NewsItem->created_date)))}}</small>

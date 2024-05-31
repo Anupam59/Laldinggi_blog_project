@@ -16,7 +16,7 @@
                             @endif
                         </div>
                         <div class="d-flex flex-column p-4">
-                            <a href="#" class="h5">{{$NewsItem->news_head_title}}</a>
+                            <a href="{{ url('/')."/".$NewsItem->cat_slug."/".$NewsItem->news_slug }}" class="h5">{{$NewsItem->news_head_title}}</a>
                             <div class="d-flex justify-content-between">
                                 <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i>{{bn_date(date("dM -Y", strtotime($NewsItem->created_date)))}}</small>
                             </div>

@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\SubSubCategoryController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\CustomAuthController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Site\DetailsController;
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -159,12 +160,19 @@ Route::middleware('isLoggedIn')->group(function (){
 //Site Route Start
 Route::get('/', [SiteController::class, 'HomePage']);
 
-Route::get('/{cat_slug}/{news_slug}', [SiteController::class, 'DetailsPage1']);
-Route::get('/{cat_slug}/{sub_cat_slug}/{news_slug}', [SiteController::class, 'DetailsPage2']);
-Route::get('/{cat_slug}/{sub_cat_slug}/{sub_sub_cat_slug}/{news_slug}', [SiteController::class, 'DetailsPage3']);
-
-Route::get('/category', [SiteController::class, 'CategoryPage']);
+Route::get('/topic/{news_tag_keyword}', [SiteController::class, 'NewsTagKeyword']);
 Route::post('/getTabData', [SiteController::class,'getTabData']);
 Route::get('/MenuData/{menuId}', [SiteController::class,'MenuData']);
+Route::get('/category', [SiteController::class, 'CategoryPage']);
+
+
+Route::get('/{cat_slug}/{news_slug}', [DetailsController::class, 'DetailsPage1']);
+Route::get('/{cat_slug}/{sub_cat_slug}/{news_slug}', [DetailsController::class, 'DetailsPage2']);
+Route::get('/{cat_slug}/{sub_cat_slug}/{sub_sub_cat_slug}/{news_slug}', [DetailsController::class, 'DetailsPage3']);
+
+
+
+
+
 
 

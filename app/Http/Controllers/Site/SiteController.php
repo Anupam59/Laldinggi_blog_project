@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Models\MenuModel;
 use App\Models\NewsModel;
+use App\Models\NewsTagModel;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -108,7 +109,6 @@ class SiteController extends Controller
             ->get();
         return $News;
     }
-
     public function MenuData($menuId){
         $News = MenuModel::with('menu_item.menu_sub_item')
             ->where('menu.menu_id', '=',$menuId)
@@ -141,69 +141,24 @@ class SiteController extends Controller
             'LeadNews', 'TopNews', 'SelectiveNews', 'VideoNews','AudioNews',
             'RecentNews','TabMenu','PoliticsNews','BangladeshNews','InternationalNews','SportsNews'));
     }
-
-
-
-    public function DetailsPage1($cat_slug,$news_slug){
+    public function NewsTagKeyword($news_tag_keyword){
+        $NewTagText = NewsTagModel::select('news_tag.news_id')
+            ->where('news_tag_keyword', 'like','%'.$news_tag_keyword.'%')
+            ->get()->toArray();
         $News = NewsModel::join('users as creator_by', 'creator_by.id', '=', 'news.creator')
             ->leftJoin('users as modifier_by', 'modifier_by.id', '=', 'news.modifier')
             ->leftJoin('category', 'category.cat_id', '=', 'news.cat_id')
-            ->leftJoin('sub_category', 'sub_category.sub_cat_id', '=', 'news.sub_cat_id')
-            ->leftJoin('sub_sub_category', 'sub_sub_category.sub_sub_cat_id', '=', 'news.sub_sub_cat_id')
             ->select(
                 'creator_by.name as creator_by',
                 'modifier_by.name as modifier_by',
-                'category.cat_id','category.cat_slug','category.cat_en_name','category.cat_bn_name',
-                'news.*'
+                'category.cat_slug','category.cat_en_name','category.cat_bn_name',
+                'news.news_id','news.cat_id','news.news_head_title','news.news_slug','news.news_image','news.publish_date','news.created_date','news.modified_date'
             )
-            ->where('category.cat_slug', '=',$cat_slug)
-            ->where('news.news_slug', '=',$news_slug)
-            ->first();
-//        dd($News);
-        return view('Site/Page/DetailsPage',compact('News'));
+            ->whereIn('news.news_id', $NewTagText)
+            ->orderBy('news_id','desc')
+            ->get();
+        return $News;
     }
-    public function DetailsPage2($cat_slug,$sub_cat_slug,$news_slug){
-        $News = NewsModel::join('users as creator_by', 'creator_by.id', '=', 'news.creator')
-            ->leftJoin('users as modifier_by', 'modifier_by.id', '=', 'news.modifier')
-            ->leftJoin('category', 'category.cat_id', '=', 'news.cat_id')
-            ->leftJoin('sub_category', 'sub_category.sub_cat_id', '=', 'news.sub_cat_id')
-            ->leftJoin('sub_sub_category', 'sub_sub_category.sub_sub_cat_id', '=', 'news.sub_sub_cat_id')
-            ->select(
-                'creator_by.name as creator_by',
-                'modifier_by.name as modifier_by',
-                'category.cat_id','category.cat_slug','category.cat_en_name','category.cat_bn_name',
-                'sub_category.sub_cat_id','sub_category.sub_cat_slug','sub_category.sub_cat_en_name','sub_category.sub_cat_bn_name',
-                'news.*'
-            )
-            ->where('category.cat_slug', '=',$cat_slug)
-            ->where('sub_category.sub_cat_slug', '=',$sub_cat_slug)
-            ->where('news.news_slug', '=',$news_slug)
-            ->first();
-        return view('Site/Page/DetailsPage',compact('News'));
-    }
-    public function DetailsPage3($cat_slug,$sub_cat_slug,$sub_sub_cat_slug,$news_slug){
-        $News = NewsModel::join('users as creator_by', 'creator_by.id', '=', 'news.creator')
-            ->leftJoin('users as modifier_by', 'modifier_by.id', '=', 'news.modifier')
-            ->leftJoin('category', 'category.cat_id', '=', 'news.cat_id')
-            ->leftJoin('sub_category', 'sub_category.sub_cat_id', '=', 'news.sub_cat_id')
-            ->leftJoin('sub_sub_category', 'sub_sub_category.sub_sub_cat_id', '=', 'news.sub_sub_cat_id')
-            ->select(
-                'creator_by.name as creator_by',
-                'modifier_by.name as modifier_by',
-                'category.cat_id','category.cat_slug','category.cat_en_name','category.cat_bn_name',
-                'sub_category.sub_cat_id','sub_category.sub_cat_slug','sub_category.sub_cat_en_name','sub_category.sub_cat_bn_name',
-                'sub_sub_category.sub_sub_cat_id','sub_sub_category.sub_sub_cat_slug','sub_sub_category.sub_sub_cat_en_name','sub_sub_category.sub_sub_cat_bn_name',
-                'news.*'
-            )
-            ->where('category.cat_slug', '=',$cat_slug)
-            ->where('news.sub_cat_slug', '=',$sub_cat_slug)
-            ->where('news.sub_sub_cat_slug', '=',$sub_sub_cat_slug)
-            ->where('news.news_slug', '=',$news_slug)
-            ->first();
-        return view('Site/Page/DetailsPage',compact('News'));
-    }
-
-
     public function CategoryPage(){
         return view('Site/Page/CategoryPage');
     }

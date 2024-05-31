@@ -92,55 +92,25 @@
                         </div>
                     </div>
 
+                    @if($NewTag)
                     <div class="row g-4 my-3">
                         <div class="col-lg-12">
                             <div class="border-bottom my-3 pb-3">
                                 <h4 class="mb-0">Trending Tags</h4>
                             </div>
                             <ul class="nav nav-pills d-inline-flex text-center mb-4">
+                                @foreach($NewTag as $key=>$Tag)
                                 <li class="nav-item mb-3">
-                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
-                                        <span class="text-dark link-hover" style="width: 90px;">Lifestyle</span>
+                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href="{{ url('/')."/topic/".$Tag }}">
+                                        <span class="text-dark link-hover" style="padding: 0px 10px;">{{$Tag}}</span>
                                     </a>
                                 </li>
-                                <li class="nav-item mb-3">
-                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
-                                        <span class="text-dark link-hover" style="width: 90px;">Sports</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item mb-3">
-                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
-                                        <span class="text-dark link-hover" style="width: 90px;">Politics</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item mb-3">
-                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
-                                        <span class="text-dark link-hover" style="width: 90px;">Magazine</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item mb-3">
-                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
-                                        <span class="text-dark link-hover" style="width: 90px;">Game</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item mb-3">
-                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
-                                        <span class="text-dark link-hover" style="width: 90px;">Movie</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item mb-3">
-                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
-                                        <span class="text-dark link-hover" style="width: 90px;">Travel</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item mb-3">
-                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
-                                        <span class="text-dark link-hover" style="width: 90px;">World</span>
-                                    </a>
-                                </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
+                    @endif
+
                 </div>
                 <div class="col-lg-4">
                     <div class="SideContent">

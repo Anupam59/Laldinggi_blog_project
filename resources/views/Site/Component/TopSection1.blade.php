@@ -14,7 +14,7 @@
 
                     <div class="lifestyle-content">
                         <div class="mt-auto">
-                            <h2 href="#" class="h3 text-white">{{$LeadNews[0]->news_head_title}}</h2>
+                            <a href="{{ url('/')."/".$LeadNews[0]->cat_slug."/".$LeadNews[0]->news_slug }}"><h2 href="#" class="h3 text-white">{{$LeadNews[0]->news_head_title}}</h2></a>
                             <div class="d-flex justify-content-between mt-4">
                                 <a href="#" class="small text-white link-hover">{{$LeadNews[0]->cat_bn_name}}</a>
                                 <small class="text-white d-block"><i class="fas fa-calendar-alt me-1"></i> {{bn_date(date("dM -Y", strtotime($LeadNews[0]->created_date)))}}</small>
@@ -39,7 +39,7 @@
                                     @endif
                                 </div>
                                 <div class="d-flex flex-column">
-                                    <a href="#" class="h6 my-2">{{$NewsItem->news_head_title}}</a>
+                                    <a href="{{ url('/')."/".$NewsItem->cat_slug."/".$NewsItem->news_slug }}" class="h6 my-2">{{$NewsItem->news_head_title}}</a>
                                     <small><i class="fa fa-clock"> {{$NewsItem->cat_bn_name}}</i> </small>
                                     <small><i class="fa fa-eye">{{bn_date(date("dM -Y", strtotime($NewsItem->created_date)))}}</i></small>
                                 </div>
@@ -79,7 +79,7 @@
                                         </div>
                                         <div class="col-7">
                                             <div class="features-content d-flex flex-column">
-                                                <a href="#" class="h6">{{$NewsItem->news_head_title}}</a>
+                                                <a href="{{ url('/')."/".$NewsItem->cat_slug."/".$NewsItem->news_slug }}" class="h6">{{$NewsItem->news_head_title}}</a>
                                                 <small><i class="fa fa-clock"> {{$NewsItem->cat_bn_name}}</i> </small>
                                                 <small><i class="fa fa-eye">{{bn_date(date("dM -Y", strtotime($NewsItem->created_date)))}}</i></small>
                                             </div>
