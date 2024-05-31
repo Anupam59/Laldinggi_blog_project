@@ -5,15 +5,15 @@
     <div class="container py-5">
         <div class="row g-4">
             @foreach($News as $key=>$NewsItem)
-                <div class="col-md-6 col-lg-6 col-xl-6">
+                <div class="col-md-6 col-lg-3 col-xl-3">
                     <div class="row g-4 align-items-center features-item">
                         <div class="col-4">
                             <div class="rounded-circle position-relative">
                                 <div class="overflow-hidden rounded-circle">
                                     @if($NewsItem->news_image)
-                                        <img src="{{asset($NewsItem->news_image)}}" class="img-zoomin rounded-circle img-fluid w-100" alt="">
+                                        <img src="{{asset($NewsItem->news_image)}}" class="img-zoomin img-fluid RCImgFeatures" alt="">
                                     @else
-                                        <img src="{{asset('Site/img/features-sports-1.jpg')}}" class="img-zoomin img-fluid rounded-circle w-100" alt="">
+                                        <img src="{{asset('Site/img/features-sports-1.jpg')}}" class="img-zoomin img-fluid rounded-circle RCImgFeatures" alt="">
                                     @endif
 
                                 </div>

@@ -459,4 +459,12 @@
     position: sticky;
     top: 125px;
 }
+.RCImgFeatures{
+    width: 100%;
+    height: 82px;
+}
+.RCImgDetails{
+    width: 100%;
+    height: 95px;
+}
 

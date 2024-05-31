@@ -242,6 +242,7 @@ class NewsController extends Controller
 
     public function NewsUpdate(Request $request, $id){
 
+//        dd($request->news_reporter);
 //        $NewsTag = NewsTagModel::where('news_id',$id)->first();
 //        dd($NewsTag);
 
@@ -294,6 +295,7 @@ class NewsController extends Controller
         $data['upazila_id'] = $request->upazila_id;
         $data['news_writer'] = $request->news_writer;
         $news_reporter = $request->news_reporter;
+        $data['news_reporter'] = null;
         if ($news_reporter){
             $data['news_reporter'] = implode(",",$request->news_reporter);
         }

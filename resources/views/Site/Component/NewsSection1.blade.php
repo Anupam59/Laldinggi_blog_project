@@ -2,7 +2,11 @@
 @if(!$News->isEmpty())
 <div class="container-fluid latest-news py-3">
     <div class="container py-1">
-        <h2 class="mb-4">{{$News[0]->cat_bn_name}}</h2>
+        <h2 class="mb-4">{{$News[0]->cat_bn_name}}
+        @if($More)
+            {{ $More }}
+        @endif
+        </h2>
         <div class="row">
             @foreach($News as $key=>$NewsItem)
             <div class="col-md-3 col-6 mb-3">

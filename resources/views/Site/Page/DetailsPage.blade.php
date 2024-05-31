@@ -1,8 +1,6 @@
 @extends('Site.Layout.SiteMain')
 @section('SiteContent')
-
-    @if($News)
-    <!-- Single Product Start -->
+    @if($NewsDetails)
     <div class="container-fluid py-2">
         <div class="container py-2">
             <ol class="breadcrumb justify-content-start mb-4">
@@ -14,35 +12,47 @@
             <div class="row g-4">
                 <div class="col-lg-8">
                     <div class="mb-4">
-                        <a href="#" class="display-5"><h1 class="DetailsTitle">{{$News->news_head_title}}</h1></a>
+                        <a href="#" class="display-5"><h1 class="DetailsTitle">{{$NewsDetails->news_head_title}}</h1></a>
                     </div>
-                    @if($News->news_details_brief)
+                    @if($NewsDetails->news_details_brief)
                         <div class="bg-light p-4 mb-4 rounded border-start border-3 border-primary">
-                            <h5 class="mb-2">{{$News->news_details_brief}}</h5>
+                            <h5 class="mb-2">{{$NewsDetails->news_details_brief}}</h5>
                         </div>
                     @endif
 
 
                     <div class="d-flex justify-content-between border-bottom pb-2 mb-4">
                         <div class="d-flex">
-                            <div class="d-flex align-items-center mr-2">
-                                <div class="rounded-circle border border-2 border-primary overflow-hidden">
-                                    <img src="http://127.0.0.1:8000/Site/img/footer-1.jpg" class="img-zoomin img-fluid rounded-circle AuthImage" alt="">
-                                </div>
-                                <div class="d-flex flex-column ps-2">
-                                    <a href="#" class="h6">Anupam Talukdar</a>
-                                    <small class="d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center mr-2">
-                                <div class="rounded-circle border border-2 border-primary overflow-hidden">
-                                    <img src="http://127.0.0.1:8000/Site/img/footer-1.jpg" class="img-zoomin img-fluid rounded-circle AuthImage" alt="">
-                                </div>
-                                <div class="d-flex flex-column ps-2">
-                                    <a href="#" class="h6">Anupam Talukdar</a>
-                                    <small class="d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
-                                </div>
-                            </div>
+
+                            @if($NewsReporter)
+                                @foreach($NewsReporter as $key=>$UserItem)
+                                    <div class="d-flex align-items-center mr-2">
+                                        <div class="rounded-circle border border-2 border-primary overflow-hidden">
+                                            <img src="http://127.0.0.1:8000/Site/img/footer-1.jpg" class="img-zoomin img-fluid rounded-circle AuthImage" alt="">
+                                        </div>
+                                        <div class="d-flex flex-column ps-2">
+                                            <a href="#" class="h6">{{ $UserItem->name }}</a>
+                                            <small class="d-block"><i class="fas fa-calendar-alt me-1"></i> {{bn_date(date("dM -Y", strtotime($NewsDetails->created_date)))}} </small>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+
+
+                            @if($NewsWriter)
+                                @foreach($NewsWriter as $key=>$UserItem)
+                                    <div class="d-flex align-items-center mr-2">
+                                        <div class="rounded-circle border border-2 border-primary overflow-hidden">
+                                            <img src="http://127.0.0.1:8000/Site/img/footer-1.jpg" class="img-zoomin img-fluid rounded-circle AuthImage" alt="">
+                                        </div>
+                                        <div class="d-flex flex-column ps-2">
+                                            <a href="#" class="h6">{{ $UserItem }}</a>
+                                            <small class="d-block"><i class="fas fa-calendar-alt me-1"></i> {{bn_date(date("dM -Y", strtotime($NewsDetails->created_date)))}} </small>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+
                         </div>
                         <div class="d-flex align-items-center">
                             <h5 class="mb-0 me-3">Share:</h5>
@@ -55,20 +65,20 @@
 
 
                     <div class="position-relative overflow-hidden rounded mb-3">
-                        @if($News->news_image)
-                            <img src="{{asset($News->news_image)}}" class="img-fluid rounded img-zoomin w-100" alt="">
+                        @if($NewsDetails->news_image)
+                            <img src="{{asset($NewsDetails->news_image)}}" class="img-fluid rounded img-zoomin w-100" alt="">
                         @else
                             <img src="{{asset('Site/img/news-1.jpg')}}" class="img-fluid rounded img-zoomin w-100" alt="">
                         @endif
 
                         <div class="position-absolute text-white px-4 py-2 bg-primary rounded" style="top: 20px; right: 20px;">
-                            {{$News->cat_bn_name}}
+                            {{$NewsDetails->cat_bn_name}}
                         </div>
 
 
-                        @if($News->news_image_caption)
+                        @if($NewsDetails->news_image_caption)
                             <div class="d-flex justify-content-center px-4 position-absolute flex-wrap" style="bottom: 10px; left: 0;">
-                                <p class="text-white ImageCaption"><i class="fa fa-solid fa-comment"></i> {{$News->news_image_caption}}</p>
+                                <p class="text-white ImageCaption"><i class="fa fa-solid fa-comment"></i> {{$NewsDetails->news_image_caption}}</p>
                             </div>
                         @endif
                     </div>
@@ -81,7 +91,7 @@
                         </div>
                     </div>
 
-                    <p class="my-4">{!! $News->news_details !!}</p>
+                    <p class="my-4">{!! $NewsDetails->news_details !!}</p>
 
 
                     <div class="row g-4 mt-3">
@@ -92,14 +102,14 @@
                         </div>
                     </div>
 
-                    @if($NewTag)
+                    @if($NewsTag)
                     <div class="row g-4 my-3">
                         <div class="col-lg-12">
                             <div class="border-bottom my-3 pb-3">
                                 <h4 class="mb-0">Trending Tags</h4>
                             </div>
                             <ul class="nav nav-pills d-inline-flex text-center mb-4">
-                                @foreach($NewTag as $key=>$Tag)
+                                @foreach($NewsTag as $key=>$Tag)
                                 <li class="nav-item mb-3">
                                     <a class="d-flex py-2 bg-light rounded-pill me-2" href="{{ url('/')."/topic/".$Tag }}">
                                         <span class="text-dark link-hover" style="padding: 0px 10px;">{{$Tag}}</span>
@@ -137,9 +147,8 @@
                                                 <div class="col-4">
                                                     <div class="rounded-circle position-relative">
                                                         <div class="overflow-hidden rounded-circle">
-                                                            <img src="{{asset('Site/img/features-sports-1.jpg')}}" class="img-zoomin img-fluid rounded-circle w-100" alt="">
+                                                            <img src="{{asset('Site/img/features-sports-1.jpg')}}" class="img-zoomin img-fluid RCImgDetails" alt="">
                                                         </div>
-                                                        <span class="rounded-circle border border-2 border-white bg-primary btn-sm-square text-white position-absolute" style="top: 10%; right: -10px;">3</span>
                                                     </div>
                                                 </div>
                                                 <div class="col-8">
@@ -237,8 +246,10 @@
             </div>
         </div>
     </div>
-    <!-- Single Product End -->
     @endif
+
+{{--    @include('Site.Component.Features',['News'=>$CategoryNews])--}}
+    @include('Site.Component.NewsSection1',['News'=>$CategoryNews, 'More'=>'আরো খবর'])
 @endsection
 @section('SiteScript')
     <script>
