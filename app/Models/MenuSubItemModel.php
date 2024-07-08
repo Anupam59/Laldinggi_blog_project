@@ -14,4 +14,8 @@ class MenuSubItemModel extends Model
     public $keyType ='int';
     public $timestamps =false;
 
+    public function menu_item(){
+        return $this->belongsTo(MenuItemModel::class);
+    }
+
 }

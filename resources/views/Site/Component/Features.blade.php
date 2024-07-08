@@ -23,10 +23,10 @@
                         <div class="col-8">
                             <div class="features-content d-flex flex-column">
                                 <p class="text-uppercase mb-2"> {{$NewsItem->cat_bn_name}}</p>
-                                <a href="{{ url('/')."/".$NewsItem->cat_slug."/".$NewsItem->news_slug }}" class="h6">
+                                <a href="{{ url('/')."/details/".$NewsItem->news_slug }}" class="h6">
                                     {{$NewsItem->news_head_title}}
                                 </a>
-                                <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i>  {{bn_date(date("dM -Y", strtotime($NewsItem->created_date)))}}</small>
+                                <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"> {{bn_date(date("dM -Y", strtotime($NewsItem->created_date)))}} </i></small>
                             </div>
                         </div>
                     </div>

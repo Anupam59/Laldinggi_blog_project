@@ -71,6 +71,8 @@ class SiteCommonController extends Controller
                 'site_tw_link',
                 'site_yt_link',
                 'site_ig_link',
+                'site_in_link',
+                'site_spe_link',
                 'site_communication',
                 'site_bn_communication',
             )->first();
@@ -84,6 +86,8 @@ class SiteCommonController extends Controller
         $data['site_tw_link'] = $request->site_tw_link;
         $data['site_yt_link'] = $request->site_yt_link;
         $data['site_ig_link'] = $request->site_ig_link;
+        $data['site_in_link'] = $request->site_in_link;
+        $data['site_spe_link'] = $request->site_spe_link;
         $data['site_communication'] = $request->site_communication;
         $data['site_bn_communication'] = $request->site_bn_communication;
 

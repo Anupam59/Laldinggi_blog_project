@@ -73,7 +73,7 @@
 
 
 
-                        <form action="{{ url('communication-update') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('/admin/communication-update') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
 
@@ -100,8 +100,22 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label>Instagram</label>
+                                        <input type="text" class="form-control" name="site_ig_link" value="{{ $SiteCommon->site_ig_link }}" placeholder="Instagram">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
                                         <label>Linkedin</label>
-                                        <input type="text" class="form-control" name="site_ig_link" value="{{ $SiteCommon->site_ig_link }}" placeholder="Linkedin">
+                                        <input type="text" class="form-control" name="site_in_link" value="{{ $SiteCommon->site_in_link }}" placeholder="Linkedin">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Skype</label>
+                                        <input type="text" class="form-control" name="site_spe_link" value="{{ $SiteCommon->site_spe_link }}" placeholder="Skype">
                                     </div>
                                 </div>
 

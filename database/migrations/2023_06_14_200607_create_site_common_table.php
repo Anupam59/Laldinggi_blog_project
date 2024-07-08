@@ -34,6 +34,8 @@ return new class extends Migration
             $table->string('site_tw_link',300)->nullable();
             $table->string('site_yt_link',300)->nullable();
             $table->string('site_ig_link',300)->nullable();
+            $table->string('site_in_link',300)->nullable();
+            $table->string('site_spe_link',300)->nullable();
 
             $table->string('site_logo',100)->nullable();
             $table->string('site_logo_big',100)->nullable();

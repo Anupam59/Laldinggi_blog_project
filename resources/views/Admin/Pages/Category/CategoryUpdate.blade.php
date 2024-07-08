@@ -76,7 +76,6 @@
 
                         <form action="{{ url('admin/category-update/'.$Category->cat_id)}}" method="post" enctype="multipart/form-data">
                             @csrf
-
                             <div class="row">
 
                                 <div class="col-md-7">
@@ -127,7 +126,6 @@
 
                                 <input id="showTagId" type="text" class="form-control d-none" name="cat_en_key" value="{{ $Category->cat_en_key }}" placeholder="Category Tag" required>
 
-
                                 <div class="col-md-12 tag_input">
                                     <div class="wrapper">
                                         <div class="title">
@@ -164,5 +162,4 @@
     <script>
         $('#cat_status').select2();
     </script>
-
 @endsection
