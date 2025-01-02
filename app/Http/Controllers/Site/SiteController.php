@@ -8,6 +8,7 @@ use App\Models\DistrictModel;
 use App\Models\DivisionModel;
 use App\Models\MenuModel;
 use App\Models\NewsModel;
+use App\Models\NewsSeoModel;
 use App\Models\NewsTagModel;
 use App\Models\SiteCommonModel;
 use App\Models\SubCategoryModel;
@@ -144,6 +145,11 @@ class SiteController extends Controller
         }
         return $NewsTag;
     }
+    public function NewsSEO($news_id){
+        $newsID = $news_id;
+        $NewsSEO = NewsSeoModel::where('news_id', '=',$newsID)->first();
+        return $NewsSEO;
+    }
     public function NewsReporter($news_reporter){
         $newsReporterId = $news_reporter;
         $NewsReporter = null;
@@ -277,7 +283,6 @@ class SiteController extends Controller
         }
 
         $News = $query->orderBy('news_id','desc')->paginate(10);
-
         return view('Site/Page/SearchPage',compact('News','Division','District','Upazila'));
     }
 
@@ -295,14 +300,20 @@ class SiteController extends Controller
             )
             ->where('news.news_slug', '=',$news_slug)
             ->first();
-
+        $NewsSEOTitle = null;
+        $NewsSEODesc = null;
+        $NewsSEO = $this->NewsSEO($NewsDetails->news_id);
+        if ($NewsSEO){
+            $NewsSEOTitle = $NewsSEO->news_seo_title;
+            $NewsSEODesc = $NewsSEO->news_seo_description;
+        }
         $NewsTag = $this->NewsTag($NewsDetails->news_id);
         $NewsReporter = $this->NewsReporter($NewsDetails->news_reporter);
         $NewsWriter = $this->NewsWriter($NewsDetails->news_writer);
         $CategoryNews = $this->CategoryNews($NewsDetails->cat_id,4,$NewsDetails->news_id);
         $TopNews = $this->RecentDNews(4,$NewsDetails->news_id);
 
-        return view('Site/Page/DetailsPage',compact('NewsDetails','NewsTag','NewsReporter',
+        return view('Site/Page/DetailsPage',compact('NewsDetails','NewsSEOTitle','NewsSEODesc','NewsTag','NewsReporter',
             'NewsWriter','CategoryNews','TopNews'));
     }
     public function CategoryPage($cat_slug){

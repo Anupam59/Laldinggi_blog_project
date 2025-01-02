@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blog Website</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title> @yield('title') </title>
+    <meta property="og:title" content="@yield('title')"/>
+    <meta name="description" content="@yield('description')"/>
+    <meta name="keywords" content="@yield('keywords')">
+    <meta property="og:keywords" content="@yield('keywords')">
+    <meta property="og:image" content="{{asset('Images/site-info/logoseo.png')}}"/>
+    <meta name="theme-color" content="#92278F" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@100;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
     <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
     <!-- Font Awesome Icons -->

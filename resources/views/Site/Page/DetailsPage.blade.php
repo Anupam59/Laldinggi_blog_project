@@ -1,4 +1,18 @@
 @extends('Site.Layout.SiteMain')
+
+@if($NewsSEOTitle)
+    @section('title', $NewsSEOTitle." - ".$SiteCommon->site_title)
+@else
+    @section('title', $NewsDetails->news_head_title." - ".$SiteCommon->site_title)
+@endif
+@if($NewsSEODesc)
+    @section('description',$NewsSEODesc." - ".$SiteCommon->site_description)
+@else
+    @section('description',$NewsDetails->news_details_brief." - ".$SiteCommon->site_description)
+@endif
+@section('keywords',implode(",",$NewsTag).",".$SiteCommon->site_keyword)
+
+
 @section('SiteContent')
     @if($NewsDetails)
     <div class="container-fluid py-2">

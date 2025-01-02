@@ -1,4 +1,16 @@
 
+
+body {
+    font-family: 'Noto Serif Bengali','Roboto', serif;
+    color: #444444;
+}
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1, a {
+    font-family: 'Noto Serif Bengali','Roboto', serif;
+}
+small, .small {
+    font-size: 0.8em;
+}
+
 /*** Spinner Start ***/
 #spinner {
     opacity: 0;
@@ -432,6 +444,13 @@
 .footer .footer-item-3 a:hover {
     color: var(--bs-primary) !important;
 }
+
+.footer .btn-link:hover{
+    color: var(--bs-primary) !important;
+}
+
+
+
 
 .copyright {
     border-top: 1px solid rgba(255, 255, 255, 0.08);

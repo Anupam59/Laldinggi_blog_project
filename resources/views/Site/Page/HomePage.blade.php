@@ -1,4 +1,9 @@
 @extends('Site.Layout.SiteMain')
+
+@section('title', $SiteCommon->site_title)
+@section('description',$SiteCommon->site_description)
+@section('keywords', $SiteCommon->site_keyword)
+
 @section('SiteContent')
 
     @include('Site.Component.Features',['News'=>$SelectiveNews])
