@@ -142,14 +142,11 @@ Route::middleware('isLoggedIn')->group(function (){
     Route::get('admin/news-status/{id}', [NewsController::class, 'NewsStatus']);
     Route::post('admin/news-update/{id}', [NewsController::class, 'NewsUpdate']);
 
-
+    //Axios Route
     Route::post('SubCategoryGetData',[AxiosCallController::class,'SubCategoryGetData']);
     Route::post('SubSubCategoryGetData',[AxiosCallController::class,'SubSubCategoryGetData']);
     Route::post('MenuItemGetData',[AxiosCallController::class,'MenuItemGetData']);
     Route::post('MenuSubItemGetData',[AxiosCallController::class,'MenuSubItemGetData']);
-    Route::post('DistrictGetData',[AxiosCallController::class,'DistrictGetData']);
-    Route::post('UpazilaGetData',[AxiosCallController::class,'UpazilaGetData']);
-
 });
 
 
@@ -167,6 +164,10 @@ Route::get('/search', [SiteController::class, 'SearchPage']);
 Route::get('/details/{news_slug}', [SiteController::class, 'DetailsPage']);
 Route::get('/{cat_slug}', [SiteController::class, 'CategoryPage']);
 Route::get('/{cat_slug}/{sub_cat_slug}', [SiteController::class, 'SubCategoryPage']);
+
+//Axios Route
+Route::post('DistrictGetData',[AxiosCallController::class,'DistrictGetData']);
+Route::post('UpazilaGetData',[AxiosCallController::class,'UpazilaGetData']);
 
 
 

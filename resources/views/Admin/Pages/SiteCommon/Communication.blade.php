@@ -122,14 +122,14 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Communication</label>
-                                        <textarea class="form-control" rows="3" name="site_communication" placeholder="Description ...">{{ $SiteCommon->site_communication }}</textarea>
+                                        <textarea class="form-control" rows="3" id="SiteCommunicationId" name="site_communication" placeholder="Communication ...">{{ $SiteCommon->site_communication }}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Communication (বাংলা)</label>
-                                        <textarea class="form-control" rows="3" name="site_bn_communication" placeholder="Communication (বাংলা) ...">{{ $SiteCommon->site_bn_communication }}</textarea>
+                                        <textarea class="form-control" rows="3" id="SiteBnCommunicationId" name="site_bn_communication" placeholder="Communication (বাংলা) ...">{{ $SiteCommon->site_bn_communication }}</textarea>
                                     </div>
                                 </div>
 
@@ -153,7 +153,14 @@
 @section('script')
     <script>
 
-        $('#cat_status').select2();
+        $('#SiteCommunicationId').summernote({
+            placeholder: 'Site Communication',
+            height: 120,
+        });
+        $('#SiteBnCommunicationId').summernote({
+            placeholder: 'Site Communication',
+            height: 120,
+        });
 
     </script>
 @endsection

@@ -70,7 +70,7 @@ class AxiosCallController extends Controller
 
     public function UpazilaGetData(Request $request){
         $district_id = $request->input('district_id');
-        $result = UpazilaModel::where('division_id','=',$district_id)->where('status',1)->select('upazila_id','upazila_name')->get();
+        $result = UpazilaModel::where('district_id','=',$district_id)->where('status',1)->select('upazila_id','upazila_name')->get();
         $data = array();
         $data[] = "<option value='' selected>Select One</option>";
         foreach ($result as $row){

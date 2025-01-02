@@ -141,7 +141,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Site Description</label>
-                                        <textarea class="form-control" rows="3" name="site_description" placeholder="Site Description ...">{{ $SiteCommon->site_description }}</textarea>
+                                        <textarea class="form-control" rows="3" id="SiteDescriptionId" name="site_description" placeholder="Site Description ...">{{ $SiteCommon->site_description }}</textarea>
                                     </div>
                                 </div>
 
@@ -171,7 +171,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Site Address</label>
-                                        <textarea class="form-control" rows="3" name="site_address" placeholder="Site Address ...">{{ $SiteCommon->site_address }}</textarea>
+                                        <textarea class="form-control" rows="3" id="SiteAddressId" name="site_address" placeholder="Site Address ...">{{ $SiteCommon->site_address }}</textarea>
                                     </div>
                                 </div>
 
@@ -179,10 +179,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Site Address (বাংলা)</label>
-                                        <textarea class="form-control" rows="3" name="site_bn_address" placeholder="Site Address (বাংলা) ...">{{ $SiteCommon->site_bn_address }}</textarea>
+                                        <textarea class="form-control" rows="3" id="SiteBnAddressId" name="site_bn_address" placeholder="Site Address (বাংলা) ...">{{ $SiteCommon->site_bn_address }}</textarea>
                                     </div>
                                 </div>
-
 
 
                                 <div class="col-md-12">
@@ -283,6 +282,19 @@
     <script>
 
         $('#cat_status').select2();
+        $('#SiteDescriptionId').summernote({
+            placeholder: 'Site Description',
+            height: 120,
+        });
+        $('#SiteAddressId').summernote({
+            placeholder: 'Site Address',
+            height: 120,
+        });
+        $('#SiteBnAddressId').summernote({
+            placeholder: 'Site Address',
+            height: 120,
+        });
+
 
     </script>
 @endsection

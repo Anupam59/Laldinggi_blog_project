@@ -33,7 +33,7 @@
                                         <option value="" selected="selected">নির্বাচন করুন</option>
                                         @if($Division)
                                             @foreach($Division as $DivisionItem)
-                                                <option value="{{ $DivisionItem->division_id }}" @if( Request::get('division') == $DivisionItem->division_id) {{ 'selected' }} @endif >{{ $DivisionItem->division_name }}</option>
+                                                <option value="{{ $DivisionItem->division_id }}" @if( Request::get('division') == $DivisionItem->division_id) {{ 'selected' }} @endif >{{ $DivisionItem->division_bn_name }}</option>
                                             @endforeach
                                         @else
 
@@ -47,7 +47,7 @@
                                         <option value="" selected="selected">নির্বাচন করুন</option>
                                         @if($District)
                                             @foreach($District as $DistrictItem)
-                                                <option value="{{ $DistrictItem->district_id }}" @if( Request::get('district') == $DistrictItem->district_id) {{ 'selected' }} @endif >{{ $DistrictItem->district_name }}</option>
+                                                <option value="{{ $DistrictItem->district_id }}" @if( Request::get('district') == $DistrictItem->district_id) {{ 'selected' }} @endif >{{ $DistrictItem->district_bn_name }}</option>
                                             @endforeach
                                         @else
 
@@ -61,7 +61,7 @@
                                         <option value="" selected="selected">নির্বাচন করুন</option>
                                         @if($Upazila)
                                             @foreach($Upazila as $UpazilaItem)
-                                                <option value="{{ $UpazilaItem->upazila_id }}" @if( Request::get('upazila') == $UpazilaItem->upazila_id) {{ 'selected' }} @endif >{{ $UpazilaItem->upazila_name }}</option>
+                                                <option value="{{ $UpazilaItem->upazila_id }}" @if( Request::get('upazila') == $UpazilaItem->upazila_id) {{ 'selected' }} @endif >{{ $UpazilaItem->upazila_bn_name }}</option>
                                             @endforeach
                                         @else
 

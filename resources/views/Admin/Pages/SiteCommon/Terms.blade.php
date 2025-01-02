@@ -80,14 +80,14 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Terms</label>
-                                        <textarea class="form-control" rows="3" name="site_terms" placeholder="Terms ...">{{ $SiteCommon->site_terms }}</textarea>
+                                        <textarea class="form-control" rows="3" id="SiteTermsDescId" name="site_terms" placeholder="Terms ...">{{ $SiteCommon->site_terms }}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Terms (বাংলা)</label>
-                                        <textarea class="form-control" rows="3" name="site_bn_terms" placeholder="Terms (বাংলা) ...">{{ $SiteCommon->site_bn_terms }}</textarea>
+                                        <textarea class="form-control" rows="3" id="SiteTermsDescBnId" name="site_bn_terms" placeholder="Terms (বাংলা) ...">{{ $SiteCommon->site_bn_terms }}</textarea>
                                     </div>
                                 </div>
 
@@ -112,6 +112,15 @@
     <script>
 
         $('#cat_status').select2();
+
+        $('#SiteTermsDescId').summernote({
+            placeholder: 'Site Terms Description',
+            height: 120,
+        });
+        $('#SiteTermsDescBnId').summernote({
+            placeholder: 'Site Terms Description',
+            height: 120,
+        });
 
     </script>
 @endsection

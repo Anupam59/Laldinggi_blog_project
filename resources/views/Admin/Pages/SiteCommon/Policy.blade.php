@@ -80,14 +80,14 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Policy</label>
-                                        <textarea class="form-control" rows="3" name="site_privacy_policy" placeholder="Policy ...">{{ $SiteCommon->site_privacy_policy }}</textarea>
+                                        <textarea class="form-control" rows="3" id="SitePolicyDescId" name="site_privacy_policy" placeholder="Policy ...">{{ $SiteCommon->site_privacy_policy }}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Policy (বাংলা)</label>
-                                        <textarea class="form-control" rows="3" name="site_bn_privacy_policy" placeholder="Policy (বাংলা) ...">{{ $SiteCommon->site_bn_privacy_policy }}</textarea>
+                                        <textarea class="form-control" rows="3" id="SitePolicyDescBnId" name="site_bn_privacy_policy" placeholder="Policy (বাংলা) ...">{{ $SiteCommon->site_bn_privacy_policy }}</textarea>
                                     </div>
                                 </div>
 
@@ -113,5 +113,15 @@
 
         $('#cat_status').select2();
 
+        $('#SitePolicyDescId').summernote({
+            placeholder: 'Site Policy Description',
+            height: 120,
+        });
+        $('#SitePolicyDescBnId').summernote({
+            placeholder: 'Site Policy Description',
+            height: 120,
+        });
+
     </script>
 @endsection
+
