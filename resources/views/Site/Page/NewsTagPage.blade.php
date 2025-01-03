@@ -1,4 +1,9 @@
 @extends('Site.Layout.SiteMain')
+
+@section('title', $NewsTagKeyword." | ".$SiteCommon->site_title)
+@section('description',$NewsTagKeyword." | ".$SiteCommon->site_description)
+@section('keywords', $NewsTagKeyword." | ".$SiteCommon->site_keyword)
+
 @section('SiteContent')
 
     <!-- Most Populer News Start -->

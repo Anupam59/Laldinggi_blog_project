@@ -328,7 +328,8 @@ class SiteController extends Controller
         )->where('cat_id','=',$CategoryData->cat_id)->get();
 
         $TitleData = [
-            "MainTitle" => $CategoryData->cat_bn_name,
+            "MainBnTitle" => $CategoryData->cat_bn_name,
+            "MainTitle" => $CategoryData->cat_en_name,
             "SubTitle" => null,
             "CategorySlug" => $CategoryData->cat_slug
         ];
@@ -365,8 +366,10 @@ class SiteController extends Controller
         )->where('cat_id','=',$CategoryData->cat_id)->get();
 
         $TitleData = [
-            "MainTitle" => $SubCategoryData->sub_cat_bn_name,
-            "SubTitle" => $CategoryData->cat_bn_name,
+            "MainBnTitle" => $SubCategoryData->sub_cat_bn_name,
+            "MainTitle" => $SubCategoryData->sub_cat_en_name,
+            "SubBnTitle" => $CategoryData->cat_bn_name,
+            "SubTitle" => $CategoryData->cat_en_name,
             "CategorySlug" => $CategoryData->cat_slug
         ];
 

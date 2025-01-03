@@ -1,6 +1,14 @@
 @extends('Site.Layout.SiteMain')
-@section('SiteContent')
 
+@if($TitleData['SubTitle'])
+    @section('title', $TitleData['MainBnTitle']." | ".$TitleData['MainTitle']." | ".$TitleData['SubTitle']." | ".$SiteCommon->site_title)
+@else
+    @section('title', $TitleData['MainBnTitle']." | ".$TitleData['MainTitle']." | ".$SiteCommon->site_title)
+@endif
+@section('description',$TitleData['MainBnTitle']." - ".$SiteCommon->site_description)
+@section('keywords',$TitleData['MainBnTitle'].",".$TitleData['MainTitle'].",".$SiteCommon->site_keyword)
+
+@section('SiteContent')
     <!-- Most Populer News Start -->
     <div class="container-fluid populer-news py-3">
         <div class="container py-1">
@@ -12,9 +20,9 @@
                                 <div class="col-lg-12 g-4">
                                     <div class="border-bottom mb-2 pb-3">
                                         @if($TitleData['SubTitle'])
-                                            <a href="{{ url('/')."/".$TitleData['CategorySlug']}}"><p class="h6 mb-2">{{ $TitleData['SubTitle'] }}</p></a>
+                                            <a href="{{ url('/')."/".$TitleData['CategorySlug']}}"><p class="h6 mb-2">{{ $TitleData['SubBnTitle'] }}</p></a>
                                         @endif
-                                        <h1 class="h4 mb-0 text-primary">{{ $TitleData['MainTitle'] }}</h1>
+                                        <h1 class="h4 mb-0 text-primary">{{ $TitleData['MainBnTitle'] }}</h1>
 
                                     </div>
                                     @if($SubCategoryAll)
